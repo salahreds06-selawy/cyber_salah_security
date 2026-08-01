@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2 class="section-title"><i class="fas fa-tools"></i> أدوات الأمن السيبراني الأساسية</h2>
+
+<div class="row">
+    <div class="col-md-4 mb-3">
+        <div class="card-dark p-3 text-center">
+            <h4 class="text-danger">Nmap</h4>
+            <p class="small text-secondary">أداة لفحص الشبكات واكتشاف المنافذ المفتوحة.</p>
+            <a href="https://nmap.org/download.html" target="_blank" class="btn btn-red btn-sm"><i class="fas fa-download"></i> تحميل</a>
+        </div>
+    </div>
+    <div class="col-md-4 mb-3">
+        <div class="card-dark p-3 text-center">
+            <h4 class="text-danger">Wireshark</h4>
+            <p class="small text-secondary">أداة لتحليل حزم الشبكة وفهم حركة البيانات.</p>
+            <a href="https://www.wireshark.org/download.html" target="_blank" class="btn btn-red btn-sm"><i class="fas fa-download"></i> تحميل</a>
+        </div>
+    </div>
+    <div class="col-md-4 mb-3">
+        <div class="card-dark p-3 text-center">
+            <h4 class="text-danger">Metasploit</h4>
+            <p class="small text-secondary">إطار عمل متقدم لاختبار الاختراق وتطوير الإكسبلويت.</p>
+            <a href="https://www.metasploit.com/" target="_blank" class="btn btn-red btn-sm"><i class="fas fa-download"></i> تحميل</a>
+        </div>
+    </div>
+</div>
+
+<a href="/" class="btn btn-red mt-3"><i class="fas fa-home"></i> العودة</a>
+{% endblock %}

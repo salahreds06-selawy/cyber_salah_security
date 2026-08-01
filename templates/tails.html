@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2 class="section-title"><i class="fas fa-user-secret"></i> نظام Tails OS</h2>
+
+<div class="card-dark p-4 mb-4">
+    <p class="lead text-light">
+        Tails هو نظام تشغيل سري ومباشر، مصمم لحماية خصوصيتك وإخفاء هويتك أثناء تصفح الإنترنت. يعتمد على شبكة Tor.
+    </p>
+    
+    <div class="text-center my-4">
+        <img src="/static/tails.jpg" alt="Tails OS" class="img-fluid rounded border border-secondary" style="max-width: 80%;">
+    </div>
+
+    <h4 class="text-danger mt-3">روابط تحميل مباشرة:</h4>
+    <div class="row g-3 mt-2">
+        <div class="col-md-6">
+            <a href="https://tails.net/install/index.en.html" target="_blank" class="btn btn-red w-100"><i class="fas fa-download"></i> تحميل Tails OS (الرسمي)</a>
+        </div>
+        <div class="col-md-6">
+            <a href="https://www.youtube.com/results?search_query=how+to+install+tails+os" target="_blank" class="btn btn-info w-100" style="background-color: #17a2b8; color: white;"><i class="fas fa-play"></i> شرح التثبيت (فيديو)</a>
+        </div>
+    </div>
+</div>
+
+<div class="text-center mt-3">
+    <a href="/" class="btn btn-red"><i class="fas fa-home"></i> العودة للرئيسية</a>
+</div>
+
+{% endblock %}

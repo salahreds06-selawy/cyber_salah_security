@@ -1,0 +1,236 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    /* تنسيق خاص لهذه الصفحة لتبدو كمرجع */
+    .ref-header { background: linear-gradient(135deg, #1a1a1a, #000); border-bottom: 3px solid #d32f2f; padding: 30px; border-radius: 8px; margin-bottom: 30px; }
+    .cmd-box { background: #0a0a0a; border-left: 4px solid #d32f2f; padding: 15px; font-family: monospace; color: #00ff00; border-radius: 4px; margin: 10px 0; }
+    .note-box { background: #1f1f1f; border-left: 4px solid #ffc107; padding: 15px; margin: 10px 0; border-radius: 4px; }
+    .warning-box { background: #2a0a0a; border-left: 4px solid #d32f2f; padding: 15px; margin: 20px 0; border-radius: 4px; }
+    .section-divider { border-top: 1px solid #333; margin: 40px 0; }
+    table { width: 100%; border-collapse: collapse; margin: 15px 0; color: #ddd; }
+    th, td { border: 1px solid #333; padding: 10px; text-align: right; }
+    th { background-color: #1a1a1a; color: #d32f2f; }
+    .code-block { background: #000; padding: 12px; border-radius: 6px; color: #00ff00; font-family: monospace; overflow-x: auto; }
+</style>
+
+<div class="ref-header text-center">
+    <img src="/static/nmap.png" alt="Nmap" style="height: 90px;" class="mb-2">
+    <h1 class="text-danger" style="font-size: 3rem;">📘 مرجع Nmap الشامل</h1>
+    <p class="lead text-light">الدليل الكامل من الألف إلى الياء للمبتدئين والمحترفين</p>
+</div>
+
+<div class="card-dark p-4 mb-4">
+
+    <!-- ================= 1. المقدمة ================= -->
+    <h2 class="text-danger mt-0"><i class="fas fa-info-circle"></i> 1. ما هو Nmap؟</h2>
+    <p class="text-light">
+        <strong>Nmap</strong> (Network Mapper) هو أداة مفتوحة المصدر مجانية، تُعتبر المعيار الذهبي في مجال استكشاف الشبكات وفحص الأمن السيبراني.
+        تم تطويره بواسطة <strong>Gordon Lyon (Fyodor)</strong>، وقد أصبح الأداة الأولى التي يتعلمها أي مختبر أمن سيبراني في العالم.
+    </p>
+    <p class="text-light">
+        ببساطة، Nmap يستخدم <strong>حزم البيانات (Packets)</strong> ويرسلها إلى شبكة أو جهاز معين، ويحلل الإجابات التي يعود بها.
+        من خلال هذا التحليل، يمكنه معرفة: الأجهزة النشطة، المنافذ المفتوحة، الخدمات التي تعمل عليها، وحتى نظام التشغيل الخاص بالجهاز.
+    </p>
+
+    <div class="section-divider"></div>
+
+    <!-- ================= 2. لماذا Nmap؟ ================= -->
+    <h2 class="text-danger"><i class="fas fa-bullseye"></i> 2. ماذا يمكنك أن تفعل بـ Nmap؟</h2>
+    <ul class="text-light" style="line-height: 2;">
+        <li><span class="text-danger">✅</span> <strong>اكتشاف الأجهزة (Host Discovery):</strong> معرفة جميع الأجهزة المتصلة بشبكتك.</li>
+        <li><span class="text-danger">✅</span> <strong>فحص المنافذ (Port Scanning):</strong> تحديد المنافذ المفتوحة (مثل: 80 للويب، 22 لـ SSH).</li>
+        <li><span class="text-danger">✅</span> <strong>تحديد الخدمات والإصدارات:</strong> معرفة ما هي البرامج التي تعمل (مثل Apache 2.4).</li>
+        <li><span class="text-danger">✅</span> <strong>كشف نظام التشغيل (OS Detection):</strong> تخمين نظام التشغيل للهدف (Windows أو Linux).</li>
+    </ul>
+
+    <div class="section-divider"></div>
+
+    <!-- ================= 3. أنواع المسح (الجدول) ================= -->
+    <h2 class="text-danger"><i class="fas fa-table"></i> 3. أنواع المسح الشائعة (Scan Types)</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>نوع المسح</th>
+                <th>الأمر</th>
+                <th>الشرح</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Ping Scan</strong></td>
+                <td class="text-success">-sn</td>
+                <td>يرسل طلبات ICMP لمعرفة الأجهزة النشطة. سريع جداً ولا يفحص المنافذ.</td>
+            </tr>
+            <tr>
+                <td><strong>SYN Scan</strong></td>
+                <td class="text-success">-sS</td>
+                <td>مسح "صامت" وسريع. لا يكمل الاتصال، لذلك نادراً ما يسجل في السجلات.</td>
+            </tr>
+            <tr>
+                <td><strong>TCP Connect Scan</strong></td>
+                <td class="text-success">-sT</td>
+                <td>يكمل اتصال TCP بالكامل.أبطأ من SYN لكنه أكثر دقة وموثوقية في بعض البيئات.</td>
+            </tr>
+            <tr>
+                <td><strong>UDP Scan</strong></td>
+                <td class="text-success">-sU</td>
+                <td>مسح المنافذ التي تعمل عبر بروتوكول UDP. (أبطأ وأصعب من TCP).</td>
+            </tr>
+            <tr>
+                <td><strong>Version Detection</strong></td>
+                <td class="text-success">-sV</td>
+                <td>يحاول التعرف على إصدار الخدمة الدقيق (مثل OpenSSH 8.2p1).</td>
+            </tr>
+            <tr>
+                <td><strong>OS Detection</strong></td>
+                <td class="text-success">-O</td>
+                <td>يحاول تخمين نظام التشغيل للجهاز المستهدف.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="section-divider"></div>
+
+    <!-- ================= 4. حالة المنافذ ================= -->
+    <h2 class="text-danger"><i class="fas fa-door-open"></i> 4. ماذا تعني "حالة" المنفذ؟</h2>
+    <ul class="text-light" style="line-height: 2;">
+        <li><span class="text-success">🔵 open (مفتوح):</span> المنفذ مفتوح وتوجد خدمة تستمع عليه. يمكنك الاتصال به.</li>
+        <li><span class="text-danger">🔴 closed (مغلق):</span> المنفذ مغلق، لكن لا يوجد جدار ناري يمنعه. يمكن فتحه مستقبلاً.</li>
+        <li><span class="text-warning">🟡 filtered (مصفى):</span> المنفذ محمي بجدار ناري (Firewall) أو مرشح. لا تستطيع الوصول إليه.</li>
+    </ul>
+
+    <div class="section-divider"></div>
+
+    <!-- ================= 5. أهم الأوامر (الجزء الطويل جداً) ================= -->
+    <h2 class="text-danger"><i class="fas fa-terminal"></i> 5. أهم 10 أوامر عملية (مع الشرح)</h2>
+
+    <div class="note-box">
+        <strong>ملاحظة هامة:</strong> في جميع الأمثلة التالية، سنفترض أن عنوان الهدف هو <code>192.168.1.1</code> (وهو عنوان الراوتر الشائع في الشبكات المنزلية). يجب عليك استبداله بعنوان هدفك الفعلي.
+    </div>
+
+    <!-- الأمر 1 -->
+    <div class="bg-dark p-3 rounded border border-secondary mb-4">
+        <h4 class="text-danger"><i class="fas fa-1"></i> 1. اكتشاف الأجهزة النشطة</h4>
+        <div class="cmd-box">nmap -sn 192.168.1.0/24</div>
+        <p class="text-light small">يرسل طلبات Ping لجميع الأجهزة في النطاق المحدد (192.168.1.1 إلى 192.168.1.254). يظهر لك الأجهزة التي تستجيب.</p>
+        <div class="note-box"><strong>💡 نصيحة:</strong> استخدم هذا الأمر أولاً لترى كم جهاز متصل بشبكتك.</div>
+    </div>
+
+    <!-- الأمر 2 -->
+    <div class="bg-dark p-3 rounded border border-secondary mb-4">
+        <h4 class="text-danger"><i class="fas fa-2"></i> 2. فحص المنافذ الشائعة بسرعة</h4>
+        <div class="cmd-box">nmap -F 192.168.1.1</div>
+        <p class="text-light small">العلامة <code>-F</code> تعني (Fast). يفحص فقط <strong>أكثر 100 منفذ شيوعاً</strong>، مما يجعله سريعاً جداً.</p>
+    </div>
+
+    <!-- الأمر 3 -->
+    <div class="bg-dark p-3 rounded border border-secondary mb-4">
+        <h4 class="text-danger"><i class="fas fa-3"></i> 3. مسح المنافذ الـ 1000 الأكثر شيوعاً</h4>
+        <div class="cmd-box">nmap 192.168.1.1</div>
+        <p class="text-light small">بدون أي علامات إضافية، يقوم Nmap بفحص <strong>أفضل 1000 منفذ</strong> للجهاز المستهدف. هذا هو الإعداد الافتراضي.</p>
+    </div>
+
+    <!-- الأمر 4 -->
+    <div class="bg-dark p-3 rounded border border-secondary mb-4">
+        <h4 class="text-danger"><i class="fas fa-4"></i> 4. فحص جميع المنافذ (الفحص الكامل)</h4>
+        <div class="cmd-box">nmap -p- 192.168.1.1</div>
+        <p class="text-light small">العلامة <code>-p-</code> تعني فحص <strong>جميع المنافذ من 1 إلى 65535</strong>. هذا الأمر قد يستغرق وقتاً طويلاً جداً (ساعات أحياناً).</p>
+        <div class="warning-box"><strong>⚠️ تحذير:</strong> استخدم هذا الأمر فقط عندما تكون في حاجة ماسة لفحص كل شيء، وكن صبوراً.</div>
+    </div>
+
+    <!-- الأمر 5 -->
+    <div class="bg-dark p-3 rounded border border-secondary mb-4">
+        <h4 class="text-danger"><i class="fas fa-5"></i> 5. تحديد الخدمات والإصدارات</h4>
+        <div class="cmd-box">nmap -sV 192.168.1.1</div>
+        <p class="text-light small">هذا هو الأمر الأهم.العلامة <code>-sV</code> تجبر Nmap على سؤال الخدمة عن إصدارها. (مثلاً: ستظهر لك أنه Apache 2.4.49 بدلاً من مجرد "http").</p>
+        <div class="note-box"><strong>💡 لماذا هذا مفيد؟</strong> إذا كنت تعرف الإصدار، يمكنك البحث عن الثغرات الأمنية الخاصة بهذا الإصدار.</div>
+    </div>
+
+    <!-- الأمر 6 -->
+    <div class="bg-dark p-3 rounded border border-secondary mb-4">
+        <h4 class="text-danger"><i class="fas fa-6"></i> 6. اكتشاف نظام التشغيل</h4>
+        <div class="cmd-box">nmap -O 192.168.1.1</div>
+        <p class="text-light small">العلامة <code>-O</code> (حرف O وليس صفر) تقوم بفحص أنماط الحزم لتخمين نظام التشغيل (مثل Windows, Linux, أو macOS).</p>
+        <div class="note-box"><strong>💡 ملاحظة:</strong> هذه الميزة ليست دقيقة 100%، لكنها تعطي فكرة جيدة جداً.</div>
+    </div>
+
+    <!-- الأمر 7 -->
+    <div class="bg-dark p-3 rounded border border-secondary mb-4">
+        <h4 class="text-danger"><i class="fas fa-7"></i> 7. المسح الصامت (SYN Scan)</h4>
+        <div class="cmd-box">nmap -sS 192.168.1.1</div>
+        <p class="text-light small">العلامة <code>-sS</code> تعني <strong>TCP SYN Scan</strong>. هذه هي الطريقة الأكثر شعبية. سريعة ولا تكمل الاتصال، لذا نادراً ما تسجل في سجلات جدار الحماية.</p>
+    </div>
+
+    <!-- الأمر 8 -->
+    <div class="bg-dark p-3 rounded border border-secondary mb-4">
+        <h4 class="text-danger"><i class="fas fa-8"></i> 8. مسح الـ UDP</h4>
+        <div class="cmd-box">nmap -sU 192.168.1.1</div>
+        <p class="text-light small">العلامة <code>-sU</code> تقوم بمسح المنافذ التي تستخدم بروتوكول UDP. هذا البروتوكول يستخدم غالباً لخدمات مثل DNS و DHCP.</p>
+        <div class="warning-box"><strong>⚠️ تحذير:</strong> مسح UDP بطيء جداً وغير دقيق في كثير من الأحيان.</div>
+    </div>
+
+    <!-- الأمر 9 -->
+    <div class="bg-dark p-3 rounded border border-secondary mb-4">
+        <h4 class="text-danger"><i class="fas fa-9"></i> 9. دمج الأوامر (المسح المتقدم)</h4>
+        <div class="cmd-box">nmap -sS -sV -O -p 22,80,443 192.168.1.1</div>
+        <p class="text-light small">يمكنك دمج العلامات. هذا الأمر يقوم بـ: مسح صامت (-sS) + تحديد الخدمات (-sV) + كشف النظام (-O) + فحص المنافذ 22 و 80 و 443 فقط.</p>
+    </div>
+
+    <!-- الأمر 10 -->
+    <div class="bg-dark p-3 rounded border border-secondary mb-4">
+        <h4 class="text-danger"><i class="fas fa-10"></i> 10. حفظ النتائج في ملف</h4>
+        <div class="cmd-box">nmap -oN scan_result.txt 192.168.1.1</div>
+        <p class="text-light small">العلامة <code>-oN</code> (Normal Output) تحفظ نتائج المسح في ملف نصي لتتمكن من مراجعتها لاحقاً.</p>
+        <div class="note-box"><strong>💡 نصيحة:</strong> استخدم <code>-oX</code> لحفظ النتائج بصيغة XML، أو <code>-oG</code> لحفظها بصيغة Grepable.</div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- ================= 6. قراءة النتائج ================= -->
+    <h2 class="text-danger"><i class="fas fa-chart-simple"></i> 6. كيف تقرأ النتائج؟</h2>
+    <p class="text-light small">عندما ينتهي المسح، سترى شيئاً مثل هذا:</p>
+    <div class="code-block">
+        PORT     STATE    SERVICE<br>
+        22/tcp   open     ssh<br>
+        80/tcp   open     http<br>
+        443/tcp  open     https<br>
+        8080/tcp filtered http-proxy
+    </div>
+    <p class="text-light small mt-3">
+        <ul class="text-light small">
+            <li><strong>PORT:</strong> رقم المنفذ والبروتوكول (TCP/UDP).</li>
+            <li><strong>STATE:</strong> حالة المنفذ (<span class="text-success">open</span>، <span class="text-danger">closed</span>، <span class="text-warning">filtered</span>).</li>
+            <li><strong>SERVICE:</strong> اسم الخدمة المتوقعة لهذا المنفذ.</li>
+        </ul>
+    </p>
+
+    <div class="section-divider"></div>
+
+    <!-- ================= 7. نصائح ذهبية ================= -->
+    <h2 class="text-danger"><i class="fas fa-lightbulb"></i> 7. نصائح ذهبية للمبتدئين</h2>
+    <ul class="text-light" style="line-height: 2;">
+        <li><span class="text-danger">🚀</span> <strong>ابدأ بشبكتك المنزلية:</strong> امسح راوتك أولاً لتتعلم.</li><li><span class="text-danger">📖</span> <strong>استخدم <code>nmap -h</code>:</strong> هذا الأمر يظهر لك دليل المساعدة دائماً.</li>
+        <li><span class="text-danger">🧠</span> <strong>افهم ما تفعله:</strong> لا تنسخ الأوامر فقط، اقرأ الشرح وافهم كل علامة.</li>
+        <li><span class="text-danger">⚡</span> <strong>استخدم <code>sudo</code> للمسح المتقدم:</strong> لاستخدام ميزات مثل <code>-sS</code> و <code>-O</code>، تحتاج لصلاحيات المدير (<code>sudo nmap ...</code>).</li>
+    </ul>
+
+    <div class="section-divider"></div>
+
+    <!-- ================= 8. الأخلاقيات ================= -->
+    <div class="warning-box">
+        <h4 class="text-danger"><i class="fas fa-gavel"></i> 8. القاعدة الذهبية: الأخلاقيات أولاً</h4>
+        <p class="text-light small">
+            <strong>تذكر دائماً:</strong> Nmap هي أداة للدفاع، وليس للهجوم.<br>
+            مسح شبكة لا تملكها، أو جهاز لا تملك الإذن بفحصه، <strong>يعتبر جريمة</strong> في معظم دول العالم ويمكن أن يؤدي إلى السجن.<br><br>
+            تدرب دائماً على منصات تعليمية آمنة مثل <strong>TryHackMe</strong> و <strong>Hack The Box</strong>، أو على شبكتك المنزلية الخاصة.
+        </p>
+    </div>
+
+</div>
+
+<div class="text-center mt-3">
+    <a href="/" class="btn btn-red"><i class="fas fa-home"></i> العودة للرئيسية</a>
+</div>
+
+{% endblock %}

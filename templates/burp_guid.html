@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    .cmd-box { background: #0a0a0a; border-left: 5px solid #ffc107; padding: 15px; font-family: monospace; color: #00ff00; border-radius: 5px; margin: 15px 0; }
+    .info-box { background: #111; border: 1px solid #333; padding: 20px; border-radius: 5px; margin: 20px 0; }
+    .warning-box { background: #1a0a0a; border: 1px solid #ffc107; padding: 15px; border-radius: 5px; margin: 20px 0; }
+</style>
+
+<div class="card-dark p-4">
+    <h2 class="section-title"><i class="fas fa-user-secret"></i> Burp Suite: الموسوعة الكاملة</h2>
+    
+    <div class="text-center mb-4">
+        <i class="fas fa-user-secret fs-1 text-warning"></i>
+    </div>
+
+    <h4 class="text-warning">1. ما هو Burp Suite؟</h4>
+    <p><strong>Burp Suite</strong> هو إطار عمل متقدم لاختبار أمان تطبيقات الويب. يعتبر الأداة الأساسية لمختبرين أمان الويب، وخاصة في اكتشاف ثغرات مثل <strong>حقن SQL</strong> و <strong>XSS</strong>.</p>
+
+    <h4 class="text-warning mt-4">2. المميزات الرئيسية</h4>
+    <ul>
+        <li><strong>Proxy:</strong> اعتراض كل حركة البيانات بين المتصفح والخادم.</li>
+        <li><strong>Scanner:</strong> مسح تلقائي للثغرات الأمنية.</li>
+        <li><strong>Intruder:</strong> تنفيذ هجمات القوة الغاشمة (Brute Force).</li>
+        <li><strong>Repeater:</strong> إعادة إرسال الطلبات المعدلة لاختبار الثغرات.</li>
+    </ul>
+
+    <h4 class="text-warning mt-4">3. خطوات أساسية للعمل</h4>
+    <ul>
+        <li>افتح Burp Suite، ثم قم بتفعيل <strong>Proxy</strong> على المنفذ <code>8080</code>.</li>
+        <li>في المتصفح، قم بإعداد الـ Proxy ليستخدم <code>127.0.0.1:8080</code>.</li>
+        <li>تصفح الموقع، وستظهر كل الطلبات في قسم <strong>HTTP History</strong>.</li>
+        <li>أرسل أي طلب إلى <strong>Repeater</strong> لتعديله وإعادة إرساله.</li>
+    </ul>
+
+    <div class="warning-box mt-4">
+        <h5 class="text-warning"><i class="fas fa-gavel"></i> تنبيه أخلاقي</h5>
+        <p>استخدم Burp Suite فقط على المواقع التي تملكها أو المصرح بها. اختبار مواقع الآخرين دون إذن جريمة.</p>
+    </div>
+
+    <a href="/hacking_tools" class="btn btn-red mt-3"><i class="fas fa-arrow-left"></i> العودة لقاعة الأدوات</a>
+</div>
+{% endblock %}

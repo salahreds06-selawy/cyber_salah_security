@@ -1,0 +1,171 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    .vault-container {
+        background-color: #0f0808;
+        border: 3px solid #d32f2f;
+        border-radius: 20px;
+        padding: 40px 20px;
+        margin: 30px 0;
+        box-shadow: 0 0 60px rgba(211, 47, 47, 0.3);
+        color: #e0e0e0;
+    }
+    .section-red {
+        background-color: #1a0a0a;
+        border-left: 5px solid #d32f2f;
+        border-radius: 10px;
+        padding: 25px;
+        margin-bottom: 30px;
+    }
+    .red-title {
+        color: #d32f2f;
+        font-weight: bold;
+        font-size: 2rem;
+        text-shadow: 0 0 15px #d32f2f;
+    }
+    .red-sub {
+        color: #ef5350;
+        border-bottom: 1px solid #d32f2f;
+        padding-bottom: 10px;
+        margin-bottom: 15px;
+    }
+    .red-text {
+        color: #e0e0e0;
+        line-height: 1.8;
+    }
+    .story-box {
+        background-color: #0a0a0a;
+        border: 1px solid #d32f2f;
+        padding: 15px;
+        border-radius: 8px;
+        margin: 15px 0;
+        color: #ccc;
+        font-style: italic;
+    }
+    .tool-link {
+        display: inline-block;
+        border: 1px solid #d32f2f;
+        color: #ef5350;
+        padding: 5px 15px;
+        border-radius: 5px;
+        font-size: 0.9rem;
+        text-decoration: none;
+        margin-top: 10px;
+        transition: 0.3s;
+    }
+    .tool-link:hover {
+        background-color: #d32f2f;
+        color: #000;
+    }
+    .glitch-text {
+        color: #ef5350;
+        font-family: 'Courier New', monospace;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        background: #0a0a0a;
+        padding: 10px;
+        border-radius: 5px;
+        display: inline-block;
+        margin-bottom: 20px;
+        border: 1px solid #d32f2f;
+    }
+</style>
+
+<h2 class="section-title" style="color: #d32f2f; border-bottom-color: #d32f2f;">
+    <i class="fas fa-radiation"></i> الخاتمة النووية
+</h2>
+
+<div class="text-center mb-3">
+    <span class="glitch-text">[ ! ] هذا هو المستوى الذي لا يصل إليه الكثيرون.</span>
+    <p style="color: #ef5350; font-style: italic; font-size: 1.2rem;">
+        "هذه المعرفة ليست للمبتدئين، وليست للجبناء. اقرأ إن كنت مستعداً لمواجهة الحقيقة."
+    </p>
+</div>
+
+<div class="vault-container">
+    <h1 class="red-title text-center">☢️ غرفة المفاعل</h1>
+    <p class="text-center" style="color: #ccc; border-bottom: 1px solid #d32f2f; padding-bottom: 15px;">
+        ثلاثة تقنيات اختراق نادرة، مع قصص حقيقية وأدوات قابلة للتحميل.
+    </p>
+
+    <!-- ========== 1. اختطاف الجلسات ========== -->
+    <div class="section-red">
+        <h4 class="red-sub"><i class="fas fa-user-secret"></i> 1. اختطاف الجلسات (Session Hijacking)</h4>
+        
+        <p class="red-text"><strong>📖 القصة الحقيقية:</strong></p>
+        <div class="story-box">
+            في عام 2022، نجح فريق من القراصنة في اختراق حسابات الآلاف من المستخدمين على منصة ألعاب مشهورة. لم يستخدموا كلمات المرور، بل استخدموا تقنية اختطاف الجلسات. سرقوا "الكوكيز" (Session Cookies) من المتصفحات، وتمكنوا من الدخول إلى الحسابات وكأنهم أصحابها.
+        </div>
+
+        <p class="red-text"><strong>⚙️ الأداة:</strong></p>
+        <p class="red-text">أداة <strong>Fiddler</strong> أو <strong>Burp Suite</strong>.</p>
+        <a href="https://www.telerik.com/fiddler" target="_blank" class="tool-link">تحميل Fiddler</a>
+        <a href="https://portswigger.net/burp/communitydownload" target="_blank" class="tool-link">تحميل Burp Suite</a>
+
+        <p class="red-text"><strong>🔬 الطريقة:</strong></p>
+        <ul style="color: #e0e0e0;">
+            <li>يقوم الهاكر بإعداد أداة اعتراض (مثل Burp Suite).</li>
+            <li>يُجبر الضحية على الدخول إلى موقع عبر شبكة غير آمنة.</li>
+            <li>يعترض الهاكر حركة البيانات، ويسرق "معرف الجلسة".</li>
+            <li>يستخدم الهاكر هذا المعرف في متصفحه الخاص، ويدخل إلى حساب الضحية.</li>
+        </ul>
+
+        <p class="red-text"><strong>🛡️ الحماية:</strong></p>
+        <p class="red-text">تأكد دائماً من أن الموقع يستخدم <strong>HTTPS</strong>. تجنب تسجيل الدخول على الشبكات العامة.</p>
+    </div><!-- ========== 2. هجوم الرجل في المنتصف ========== -->
+    <div class="section-red">
+        <h4 class="red-sub"><i class="fas fa-eye"></i> 2. هجوم الرجل في المنتصف (MITM)</h4>
+        
+        <p class="red-text"><strong>📖 القصة الحقيقية:</strong></p>
+        <div class="story-box">
+            في عام 2019، تم اختراق نظام مصرفي في إحدى الدول الأوروبية عبر هجوم MITM. القراصنة وضعوا جهازاً صغيراً بين الراوتر وشبكة البنك. كل العمليات المالية كانت تمر عبر جهازهم، وتمكنوا من تحويل ملايين الدولارات قبل أن يكتشفهم أحد.
+        </div>
+
+        <p class="red-text"><strong>⚙️ الأداة:</strong></p>
+        <p class="red-text">أداة <strong>Ettercap</strong> (مثبتة مسبقاً في كالي لينكس).</p>
+        <a href="https://www.ettercap-project.org/" target="_blank" class="tool-link">موقع Ettercap</a>
+
+        <p class="red-text"><strong>🔬 الطريقة:</strong></p>
+        <ul style="color: #e0e0e0;">
+            <li>يقوم الهاكر بتثبيت Ettercap على جهازه.</li>
+            <li>يبدأ الهاكر بهجوم "تسمم ARP" (ARP Spoofing).</li>
+            <li>يصبح جهاز الهاكر هو "الوسيط" بين الضحية والإنترنت.</li>
+            <li>كل بيانات الضحية (رسائل، صور، كلمات مرور) تمر عبر الهاكر.</li>
+        </ul>
+
+        <p class="red-text"><strong>🛡️ الحماية:</strong></p>
+        <p class="red-text">استخدام VPN قوي. على الشبكات العامة، تجنب إجراء عمليات حساسة.</p>
+    </div>
+
+    <!-- ========== 3. ثغرات يوم الصفر ========== -->
+    <div class="section-red">
+        <h4 class="red-sub"><i class="fas fa-biohazard"></i> 3. ثغرات يوم الصفر (Zero Day Exploits)</h4>
+        
+        <p class="red-text"><strong>📖 القصة الحقيقية:</strong></p>
+        <div class="story-box">
+            في عام 2021، تم اكتشاف ثغرة "يوم صفر" في برنامج <strong>Zoom</strong>. هذه الثغرة كانت تسمح للقراصنة بالتحكم في كاميرات المستخدمين عن بعد دون إذنهم. الشركة اكتشفت الثغرة لاحقاً، لكن الضرر كان قد وقع بالفعل في آلاف الأجهزة.
+        </div>
+
+        <p class="red-text"><strong>⚙️ الأداة:</strong></p>
+        <p class="red-text">لا توجد أداة واحدة. ثغرات يوم الصفر تُكتشف بواسطة باحثين أمنيين، وتُباع في السوق السوداء بأسعار خيالية.</p>
+
+        <p class="red-text"><strong>🔬 الطريقة:</strong></p>
+        <ul style="color: #e0e0e0;">
+            <li>يجد الهاكر خطأ برمجياً في نظام أو تطبيق معين.</li>
+            <li>يكتب كوداً صغيراً يستغل هذا الخطأ.</li>
+            <li>ينفذ الكود للسيطرة على النظام.</li>
+            <li>في السوق السوداء، يباع هذا الكود (Exploit) بملايين الدولارات.</li>
+        </ul>
+
+        <p class="red-text"><strong>🛡️ الحماية:</strong></p>
+        <p class="red-text">لا توجد حماية مطلقة. الحل الوحيد هو تحديث جميع برامجك باستمرار.</p>
+    </div>
+
+    <div class="text-center mt-4">
+        <a href="/" class="btn" style="border: 2px solid #d32f2f; color: #d32f2f; padding: 10px 30px; border-radius: 8px; text-decoration: none; background-color: transparent; transition: 0.3s;">العودة للرئيسية</a>
+    </div>
+</div>
+
+{% endblock %}

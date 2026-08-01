@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2 class="section-title"><i class="fas fa-chart-line"></i> إحصائيات الأمن السيبراني</h2>
+
+<div class="card-dark p-4">
+    <p class="text-light text-center mb-4">
+        استناداً إلى تقارير <strong>CERT السعودية</strong> و <strong>Trend Micro</strong> و <strong>Kaspersky</strong> (2024-2025).
+    </p>
+
+    <div class="row text-center text-light mt-4 g-3">
+        <div class="col-md-4 border-end border-secondary">
+            <h3 class="text-danger fw-bold">+70%</h3>
+            <p class="small">زيادة في هجمات <strong>الفدية (Ransomware)</strong> على الشركات العربية.</p>
+        </div>
+        
+        <div class="col-md-4 border-end border-secondary">
+            <h3 class="text-danger fw-bold">السعودية</h3>
+            <p class="small">الأكثر استهدافاً في المنطقة، تليها <strong>الإمارات</strong> و <strong>مصر</strong>.</p>
+        </div>
+
+        <div class="col-md-4">
+            <h3 class="text-danger fw-bold">$2.5B</h3>
+            <p class="small">الخسائر السنوية المقدرة بسبب الهجمات الإلكترونية في الدول العربية.</p>
+        </div>
+    </div>
+
+    <div class="text-secondary text-center small mt-3 border-top border-secondary pt-3">
+        <i class="fas fa-check-circle text-success"></i> <strong>المصادر:</strong> تقرير تهديدات الشرق الأوسط 2025 | مركز الأمن السيبراني الوطني
+    </div>
+</div>
+
+<div class="text-center mt-4">
+    <a href="/" class="btn btn-red"><i class="fas fa-home"></i> العودة للرئيسية</a>
+</div>
+
+{% endblock %}

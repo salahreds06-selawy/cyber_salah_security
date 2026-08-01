@@ -1,0 +1,135 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    .guide-section {
+        background-color: #1f1f1f;
+        border-left: 5px solid #00ff00;
+        padding: 20px;
+        border-radius: 8px;
+        margin-bottom: 30px;
+    }
+    .guide-section h4 { color: #00ff00; }
+    .cmd-box {
+        background: #000;
+        border: 1px solid #00ff00;
+        padding: 15px;
+        font-family: monospace;
+        color: #00ff00;
+        border-radius: 8px;
+        margin: 10px 0;
+    }
+    .img-display {
+        max-width: 80%;
+        height: auto;
+        border: 1px solid #333;
+        border-radius: 10px;
+        margin: 15px 0;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .warning-box {
+        background: #1a0a0a;
+        border: 1px solid #ff4444;
+        padding: 15px;
+        border-radius: 8px;
+        margin: 15px 0;
+    }
+    .tip-box {
+        background: #0a1a0a;
+        border: 1px solid #00ff00;
+        padding: 15px;
+        border-radius: 8px;
+        margin: 15px 0;
+    }
+</style>
+
+<h2 class="section-title"><i class="fas fa-user-secret"></i> التصفح المختفي: الدارك نت الكامل</h2>
+
+<!-- ===== 1. ما هو الدارك نت؟ ===== -->
+<div class="guide-section">
+    <h4>🌑 ما هو الدارك نت (Dark Net)؟</h4>
+    <p>
+        الدارك نت هو جزء من الإنترنت غير مرئي لمحركات البحث العادية (مثل جوجل). 
+        هو عالم موازٍ يحتوي على مواقع، خدمات، ومنتديات لا يمكن الوصول إليها إلا عبر متصفحات خاصة.
+    </p>
+    <p><strong>الفرق بين Surface Web و Deep Web و Dark Net:</strong></p>
+    <ul>
+        <li>🔵 <strong>Surface Web:</strong> الإنترنت الذي نستخدمه يومياً (جوجل، فيسبوك، يوتيوب).</li>
+        <li>🔵 <strong>Deep Web:</strong> محتوى غير مفهرس (مثل البريد الإلكتروني، قواعد البيانات).</li>
+        <li>🔴 <strong>Dark Net:</strong> جزء يحتاج إلى متصفح خاص (مثل Tor).</li>
+    </ul>
+    <div class="warning-box">
+        <p class="text-danger fw-bold"><i class="fas fa-exclamation-triangle"></i> تحذير:</p>
+        <p>الدارك نت ليس كله سيئًا، لكنه يحتوي على أنشطة غير قانونية. استخدمه بحذر وللأغراض التعليمية فقط.</p>
+    </div>
+</div>
+
+<!-- ===== 2. متصفح Tor ===== -->
+<div class="guide-section">
+    <h4>🧅 متصفح Tor (The Onion Router)</h4>
+    <p>
+        Tor هو متصفح مجاني يسمح لك بالتصفح بشكل مجهول. يتم توجيه حركة البيانات عبر شبكة من الخوادم (تسمى "عقد")، مما يجعل من الصعب تتبع مصدر الاتصال.
+    </p>
+
+    <!-- صورة متصفح Tor -->
+    <img src="/static/tor_browser.jpg" class="img-display" alt="متصفح Tor">
+
+    <div class="cmd-box">
+        🔗 رابط التحميل: <a href="https://www.torproject.org/download/" target="_blank" style="color:#00ff00;">torproject.org</a>
+    </div>
+</div>
+
+<!-- ===== 3. Tails OS ===== -->
+<div class="guide-section">
+    <h4>💾 Tails OS (نظام الخصوصية المطلق)</h4>
+    <p>
+        Tails هو نظام تشغيل مباشر (Live OS) يعمل من USB. كل شيء يعمل عبر Tor، ولا يترك أي أثر عند إيقاف التشغيل.
+    </p>
+
+    <!-- صورة Tails OS -->
+    <img src="/static/tails.jpg" class="img-display" alt="Tails OS">
+
+    <div class="cmd-box">
+        🔗 رابط التحميل: <a href="https://tails.net/install/index.en.html" target="_blank" style="color:#00ff00;">tails.net</a>
+    </div>
+</div>
+
+<!-- ===== 4. طريقة الدخول ===== -->
+<div class="guide-section">
+    <h4>🚀 طريقة الدخول إلى الدارك نت (خطوة بخطوة)</h4>
+    <ol>
+        <li><strong>حمل متصفح Tor</strong> من الموقع الرسمي.</li>
+        <li><strong>ثبّت المتصفح</strong> وافتحه.</li>
+        <li><strong>انتظر</strong> حتى يتصل بشبكة Tor (سيظهر زر "Connect").</li>
+        <li><strong>الآن أنت داخل شبكة Tor.</strong></li>
+        <li><strong>استخدم الروابط التي تنتهي بـ <code>.onion</code></strong> للدخول إلى مواقع الدارك نت.</li>
+    </ol>
+    <div class="tip-box">
+        <p class="text-success fw-bold"><i class="fas fa-lightbulb"></i> نصيحة:</p>
+        <p>للبحث في الدارك نت، استخدم محرك بحث <strong>Ahmia</strong> (الذي سنشرحه بعد قليل).</p>
+    </div>
+</div>
+
+<!-- ===== 5. Ahmia ===== -->
+<div class="guide-section">
+    <h4>🔍 Ahmia: محرك بحث الدارك نت</h4>
+    <p>
+        Ahmia هو محرك بحث مخصص لشبكة Tor. يمكنك استخدامه للبحث عن خدمات .
+       onion بشكل آمن نسبياً.
+    </p>
+    <div class="cmd-box">
+        🔗 رابط الزيارة: <a href="http://ahmia.fi" target="_blank" style="color:#00ff00;">ahmia.fi</a>
+    </div>
+    <ul>
+        <li>يمكنك البحث داخل متصفح Tor مباشرة.</li>
+        <li>يعطي نتائج مفهرسة من شبكة .onion.</li>
+    </ul>
+</div>
+
+<div class="text-center mt-5">
+    <a href="/" class="btn btn-main"><i class="fas fa-home"></i> العودة للرئيسية</a>
+</div>
+
+{% endblock %}

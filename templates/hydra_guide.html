@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    .cmd-box { background: #0a0a0a; border-left: 5px solid #ffffff; padding: 15px; font-family: monospace; color: #00ff00; border-radius: 5px; margin: 15px 0; }
+    .info-box { background: #111; border: 1px solid #333; padding: 20px; border-radius: 5px; margin: 20px 0; }
+    .warning-box { background: #1a0a0a; border: 1px solid #ffffff; padding: 15px; border-radius: 5px; margin: 20px 0; }
+</style>
+
+<div class="card-dark p-4">
+    <h2 class="section-title"><i class="fas fa-skull"></i> Hydra: الموسوعة الكاملة</h2>
+    
+    <div class="text-center mb-4">
+        <i class="fas fa-skull fs-1 text-light"></i>
+    </div>
+
+    <h4 class="text-light">1. ما هو Hydra؟</h4>
+    <p><strong>Hydra</strong> هي أداة متخصصة في <strong>هجمات القوة الغاشمة (Brute Force)</strong>. تدعم العديد من البروتوكولات مثل SSH, FTP, HTTP, RDP.</p>
+
+    <h4 class="text-light mt-4">2. المميزات</h4>
+    <ul>
+        <li>يدعم أكثر من 50 بروتوكولاً.</li>
+        <li>سريعة جداً وتدعم المعالجة المتعددة (Multithreading).</li>
+        <li>تستخدم في اختبار قوة كلمات المرور.</li>
+    </ul>
+
+    <h4 class="text-light mt-4">3. مثال عملي</h4>
+    <p>لتنفيذ هجوم على خدمة SSH:</p>
+    <div class="cmd-box">hydra -l admin -P passwords.txt ssh://192.168.1.1</div>
+    <p>هذا سيحاول استخدام كلمة مرور من ملف <code>passwords.txt</code> مع اسم المستخدم <code>admin</code>.</p>
+
+    <div class="warning-box mt-4">
+        <h5 class="text-light"><i class="fas fa-gavel"></i> تنبيه</h5>
+        <p>استخدم Hydra فقط على أنظمتك الخاصة. الهجمات على الأنظمة الأخرى جريمة.</p>
+    </div>
+
+    <a href="/hacking_tools" class="btn btn-red mt-3"><i class="fas fa-arrow-left"></i> العودة لقاعة الأدوات</a>
+</div>
+{% endblock %}

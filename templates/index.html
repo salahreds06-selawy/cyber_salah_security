@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    .shadow-text { text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.9); }
+    
+    .small-card {
+        background-color: rgba(15, 15, 15, 0.95);
+        border: 1px solid #333;
+        border-radius: 8px;
+        padding: 20px 15px;
+        text-align: center;
+        transition: 0.3s;
+        text-decoration: none;
+        color: #ddd;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .small-card:hover {
+        border-color: #00ff00;
+        transform: translateY(-4px);
+        box-shadow: 0 0 15px rgba(0, 255, 0, 0.2);
+    }
+    .small-card i { font-size: 1.8rem; color: #00ff00; margin-bottom: 8px; }
+    .small-card h6 { color: white; font-weight: bold; font-size: 1rem; margin: 0; }
+</style>
+
+<div class="container text-center" style="margin-top: 30px;">
+    
+    <h1 class="display-3 fw-bold text-success shadow-text">Cyber <span class="text-white shadow-text">Salah</span> Security</h1>
+    <p class="lead text-light mt-2 shadow-text">مرحباً بك في عالم الأمن السيبراني.</p>
+
+    <!-- خانة البحث -->
+    <div class="row justify-content-center mt-4 mb-4">
+        <div class="col-md-8">
+            <form action="/search" method="GET" class="bg-black p-2 rounded-pill border border-secondary d-flex align-items-center">
+                <i class="fas fa-search text-success ms-3 fs-5"></i>
+                <input type="text" name="q" class="form-control bg-transparent border-0 text-white ms-3" placeholder="ابحث عن: nmap, tor, hacking tools...">
+                <button type="submit" class="btn btn-main rounded-pill px-4">بحث</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- صف البطاقات -->
+    <div class="row justify-content-center g-2 mt-2">
+        
+        <div class="col-6 col-md-3">
+            <a href="/" class="small-card">
+                <i class="fas fa-home"></i>
+                <h6>الرئيسية</h6>
+            </a>
+        </div>
+
+        <div class="col-6 col-md-3">
+            <a href="/journey" class="small-card">
+                <i class="fas fa-road"></i>
+                <h6>رحلتي</h6>
+            </a>
+        </div>
+
+        <div class="col-6 col-md-3">
+            <a href="/connect" class="small-card">
+                <i class="fas fa-lock"></i>
+                <h6>الخصوصية</h6>
+            </a>
+        </div>
+
+        <div class="col-6 col-md-3">
+            <a href="/hacking_tools" class="small-card">
+                <i class="fas fa-tools"></i>
+                <h6>أدوات الاختراق</h6>
+            </a>
+        </div>
+
+        <div class="col-6 col-md-3">
+            <a href="/tor_guide" class="small-card">
+                <i class="fas fa-user-secret"></i>
+                <h6>التصفح المختفي</h6>
+            </a>
+        </div>
+
+        <div class="col-6 col-md-3">
+            <a href="/roadmaps" class="small-card" style="border-color: #00ff00; border-width: 2px;">
+                <i class="fas fa-graduation-cap"></i>
+                <h6>مسارات</h6>
+            </a>
+        </div>
+
+        <div class="col-6 col-md-3">
+            <a href="/lab" class="small-card">
+                <i class="fas fa-terminal"></i>
+                <h6>جرب كالي الان</h6>
+            </a>
+        </div>
+
+        <div class="col-6 col-md-3">
+            <a href="/vault" class="small-card" style="border-color: #d32f2f; border-width: 2px; background-color: #1a0a0a;">
+                <i class="fas fa-radiation" style="color: #d32f2f; font-size: 1.8rem;"></i>
+                <h6 style="color: #d32f2f; font-weight: bold;">الخاتمة النووية</h6>
+                <p style="font-size: 0.6rem; color: #aaa;">اكتشف المقال بنفسك</p>
+            </a>
+        </div>
+
+        <div class="col-6 col-md-3">
+            <a href="/knowledge" class="small-card">
+                <i class="fas fa-book-open"></i>
+                <h6>المعرفة</h6>
+            </a>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

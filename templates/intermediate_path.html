@@ -1,0 +1,180 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    .book-container { max-width: 900px; margin: 0 auto; }
+    .chapter { background-color: #141414; border-radius: 12px; padding: 30px; margin-bottom: 35px; border-left: 6px solid #ffaa00; }
+    .chapter-title { color: #ffaa00; font-size: 1.7rem; border-bottom: 1px solid #333; padding-bottom: 10px; margin-bottom: 20px; }
+    .code-box { background: #000; border: 1px solid #ffaa00; padding: 15px; font-family: 'Courier New', monospace; color: #00ff00; border-radius: 8px; margin: 15px 0; overflow-x: auto; }
+    .tip-box { background: #1e2a1e; border: 1px solid #00ff00; padding: 15px; border-radius: 8px; margin: 15px 0; }
+</style>
+
+<div class="book-container">
+    <div class="text-center mb-5">
+        <i class="fas fa-crosshairs fs-1 text-warning mb-3"></i>
+        <h1 class="text-warning fw-bold" style="font-size: 3rem;">مسار المتوسط</h1>
+        <p class="text-light fs-5">المرجع الشامل لمسح الشبكات وتحليل الحزم</p>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- الفصل 1: المقدمة -->
+    <!-- ========================================== -->
+    <div class="chapter">
+        <h2 class="chapter-title">📖 الفصل الأول: لماذا نحتاج لمسح الشبكات؟</h2>
+        <p>
+            في عالم الأمن السيبراني، مسح الشبكات (Network Scanning) هو الخطوة الأولى قبل أي اختراق أو فحص أمني. 
+            قبل أن تهاجم أو تحمي، يجب أن تعرف ماذا يوجد على الشبكة.
+        </p>
+        <p><strong>ماذا سنتعلم في هذا المسار؟</strong></p>
+        <ul>
+            <li>كيف نكتشف الأجهزة المتصلة بشبكتنا.</li>
+            <li>كيف نجد المنافذ المفتوحة والخدمات التي تعمل عليها.</li>
+            <li>كيف نستخدم Nmap و Wireshark بشكل احترافي.</li>
+        </ul>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- الفصل 2: Nmap (الموسع والعميق) -->
+    <!-- ========================================== -->
+    <div class="chapter">
+        <h2 class="chapter-title">🔧 الفصل الثاني: Nmap - الدليل من الألف إلى الياء</h2>
+        
+        <!-- مرحلة 1: الفهم -->
+        <h4 class="text-warning mt-4">🔹 المرحلة 1: ما هو Nmap وما هي قدراته؟</h4>
+        <p>
+            Nmap (Network Mapper) هو أداة مجانية ومفتوحة المصدر. قدرته الأساسية هي إرسال حزم بيانات (Packets) إلى جهاز أو شبكة، وتحليل الردود التي يعود بها، ليكشف لك:
+        </p>
+        <ul>
+            <li>الأجهزة النشطة على الشبكة.</li>
+            <li>المنافذ المفتوحة (Open Ports).</li>
+            <li>الخدمات التي تعمل على تلك المنافذ (HTTP, SSH, FTP...).</li>
+            <li>نظام التشغيل للجهاز المستهدف (Windows أو Linux).</li>
+        </ul>
+
+        <!-- مرحلة 2: الإعداد -->
+        <h4 class="text-warning mt-4">🔹 المرحلة 2: اعرف شبكتك أولاً</h4>
+        <p>
+            قبل أن تبدأ المسح، يجب أن تعرف عنوان شبكتك. في Kali Linux، اكتب الأمر التالي في الطرفية (Terminal):
+        </p>
+        <div class="code-box">ip a</div>
+        <p>
+            ابحث عن كلمة <code>inet</code>. إذا وجدت <code>inet 192.168.1.5/24</code>، فهذا يعني أن شبكتك هي <code>192.168.1.0/24</code>.
+        </p>
+        <div class="tip-box">
+            <h5 class="text-success"><i class="fas fa-lightbulb"></i> لماذا هذا مهم؟</h5>
+            <p>لأن معظم الهجمات تبدأ من داخل الشبكة المحلية. هذا هو أول شيء يتعلمه الهاكر الأخلاقي.</p>
+        </div>
+
+        <!-- مرحلة 3: المسح الخفيف -->
+        <h4 class="text-warning mt-4">🔹 المرحلة 3: المسح الخفيف (Ping Scan)</h4>
+        <p>
+            هذا هو أول أمر Nmap ستستخدمه. هدفه معرفة الأجهزة النشطة في شبكتك بسرعة، دون فحص المنافذ.
+        </p>
+        <div class="code-box">nmap -sn 192.168.1.0/24</div>
+        <p>
+            <strong>شرح الأمر:</strong><br>
+            <code>-sn</code>: تعني Ping Scan. يرسل طلبات ICMP لكل جهاز في النطاق المحدد.<br>
+            <code>192.168.1.0/24</code>: نطاق الشبكة. الـ <code>/24</code> تعني أن هناك 254 جهازاً محتملاً.
+        </p>
+        <p>
+            <strong>النتائج:</strong> ستظهر لك قائمة بـ <code>Nmap scan report for 192.168.1.1</code> (والأجهزة الأخرى التي تستجيب). 
+            إذا لم يستجب جهاز، فهو إما مغلق أو غير موجود.
+        </p><!-- مرحلة 4: فحص المنافذ -->
+        <h4 class="text-warning mt-4">🔹 المرحلة 4: فحص المنافذ الأساسية (Port Scanning)</h4>
+        <p>
+            الآن عرفت الأجهزة النشطة. حان الوقت لمعرفة ماذا تعمل عليها. سنركز على جهاز الراوتر (غالباً 192.168.1.1).
+        </p>
+        <div class="code-box">nmap -sT 192.168.1.1</div>
+        <p>
+            <strong>شرح الأمر:</strong><br>
+            <code>-sT</code>: تعني TCP Connect Scan. يحاول الاتصال بكل منفذ (من 1 إلى 1000 افتراضياً).
+        </p>
+        <p>
+            <strong>النتائج:</strong> ستظهر لك قائمة مثل:<br>
+            <code>22/tcp open ssh</code><br>
+            <code>80/tcp open http</code><br>
+            هذا يعني أن المنفذ 22 (SSH) مفتوح، والمنفذ 80 (HTTP) مفتوح.
+        </p>
+
+        <!-- مرحلة 5: تحديد الخدمات -->
+        <h4 class="text-warning mt-4">🔹 المرحلة 5: تحديد الخدمات والإصدارات (المرحلة الذهبية)</h4>
+        <p>
+            مجرد معرفة أن المنفذ 80 مفتوح لا يكفي. إذا كنت تعرف أن الخدمة هي Apache 2.4.49، يمكنك البحث عن ثغرات هذا الإصدار.
+        </p>
+        <div class="code-box">nmap -sV 192.168.1.1</div>
+        <p>
+            <strong>شرح الأمر:</strong><br>
+            <code>-sV</code>: تطلب من Nmap محاولة التعرف على الإصدار الدقيق للخدمة.
+        </p>
+        <p>
+            <strong>النتائج:</strong> بدلاً من <code>http</code>، سترى <code>Apache httpd 2.4.49</code>. هذا كنز من المعلومات.
+        </p>
+
+        <!-- مرحلة 6: المسح الصامت -->
+        <h4 class="text-warning mt-4">🔹 المرحلة 6: المسح الصامت (Stealth Scan)</h4>
+        <p>
+            عندما تكون في بيئة حساسة، لا تريد أن يكتشف جدار الحماية مسحك. الحل هو <strong>SYN Scan</strong>.
+        </p>
+        <div class="code-box">nmap -sS 192.168.1.1</div>
+        <p>
+            <strong>شرح الأمر:</strong><br>
+            <code>-sS</code>: يرسل حزمة SYN، وإذا رد الهدف بـ SYN-ACK، يعرف أن المنفذ مفتوح، لكنه لا يكمل الاتصال.
+            هذا يعني أن المسح لا يُسجل في سجلات الخادم.
+        </p>
+
+        <!-- مرحلة 7: المسح الكامل -->
+        <h4 class="text-warning mt-4">🔹 المرحلة 7: فحص جميع المنافذ (Full Scan)</h4>
+        <p>
+            أحياناً تحتاج للتأكد من أنك لم تفوّت أي منفذ. هنا تستخدم <code>-p-</code> (حرف p وعلامة ناقص).
+        </p>
+        <div class="code-box">nmap -p- 192.168.1.1</div>
+        <p>
+            <strong>تحذير:</strong> هذا الأمر يفحص جميع المنافذ من 1 إلى 65535. قد يستغرق ساعات، لذلك استخدمه بحكمة.
+        </p>
+
+        <!-- مرحلة 8: الخاتمة -->
+        <h4 class="text-warning mt-4">🔹 المرحلة 8: خلاصة ما تعلمته</h4>
+        <ul>
+            <li>تعلمت كيف تحدد شبكتك بـ <code>ip a</code>.</li>
+            <li>تعلمت كيف تكتشف الأجهزة بـ <code>nmap -sn</code>.</li>
+            <li>تعلمت كيف تفحص المنافذ بـ <code>-sT</code> و <code>-sS</code>.</li>
+            <li>تعلمت أهم شيء: تحديد الخدمات بـ <code>-sV</code>.</li>
+        </ul>
+        <p>
+            إذا فهمت هذه المراحل، فأنت في طريقك لأن تكون خبيراً في Nmap.
+        </p>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- الفصل 3: Wireshark -->
+    <!-- ========================================== -->
+    <div class="chapter">
+        <h2 class="chapter-title">📡 الفصل الثالث: Wireshark - تحليل حزم الشبكة</h2>
+        <p>
+            Wireshark هو محلل حزم الشبكة (Packet Analyzer). يتيح لك رؤية كل حزمة بيانات تسافر عبر شبكتك.
+        </p>
+        <p>
+            باستخدام Wireshark، يمكنك اكتشاف هجمات التصيد، والبرامج الضارة، وحتى معرفة ما إذا كان أحدهم يتجسس على شبكتك.
+        </p>
+        <div class="tip-box">
+            <h5 class="text-success"><i class="fas fa-lightbulb"></i> نصيحة للمبتدئين في Wireshark</h5>
+            <p>افتح Wireshark، اختر بطاقة الشبكة الخاصة بك (Wi-Fi)، واضغط Start. سترى آلاف الحزم. ابدأ بتصفية النتائج باستخدام كلمة <code>http</code> لترى حركة التصفح فقط.</p>
+        </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- الفصل 4: الأخلاقيات -->
+    <!-- ========================================== -->
+    <div class="chapter">
+        <h2 class="chapter-title">⚖️ الفصل الرابع: أخلاقيات مسح الشبكات</h2><div class="bg-danger bg-opacity-10 p-3 rounded border border-danger">
+            <p class="text-danger fw-bold"><i class="fas fa-gavel"></i> تنبيه هام:</p>
+            <p class="text-light">مسح شبكة لا تملكها (مثل شبكة الجيران أو شبكة شركة) يعتبر جريمة. تدرب دائماً على شبكتك المنزلية (192.168.1.0/24) أو على منصات مثل <strong>TryHackMe</strong>.</p>
+        </div>
+    </div>
+
+    <div class="text-center mt-5">
+        <a href="/roadmaps" class="btn btn-main"><i class="fas fa-arrow-left"></i> العودة لصفحة المسارات</a>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,240 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    .terminal-container {
+        background-color: #0a0a0a;
+        border: 2px solid #00ff00;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 20px 0;
+        font-family: 'Courier New', monospace;
+        min-height: 400px;
+        display: flex;
+        flex-direction: column;
+        direction: ltr;
+        text-align: left;
+    }
+    .terminal-header {
+        color: #00ff00;
+        border-bottom: 1px solid #333;
+        padding-bottom: 10px;
+        margin-bottom: 15px;
+        font-size: 0.9rem;
+    }
+    .output-area {
+        flex-grow: 1;
+        color: #00ff00;
+        overflow-y: auto;
+        margin-bottom: 15px;
+        white-space: pre-wrap;
+        line-height: 1.5;
+    }
+    .input-line {
+        display: flex;
+        align-items: center;
+        border-top: 1px solid #333;
+        padding-top: 10px;
+    }
+    .prompt {
+        color: #00ff00;
+        margin-right: 10px;
+        font-weight: bold;
+    }
+    .input-line input {
+        background: transparent;
+        border: none;
+        color: #00ff00;
+        font-family: 'Courier New', monospace;
+        font-size: 1rem;
+        width: 100%;
+        outline: none;
+    }
+
+    .help-box {
+        background-color: #111;
+        border: 1px solid #00ff00;
+        border-radius: 10px;
+        padding: 15px;
+        margin-top: 15px;
+        font-family: 'Courier New', monospace;
+        direction: ltr;
+        text-align: left;
+        max-height: 300px;
+        overflow-y: auto;
+    }
+    .help-box h5 {
+        color: #00ff00;
+        margin-bottom: 10px;
+        border-bottom: 1px solid #333;
+        padding-bottom: 10px;
+    }
+    .help-box details {
+        margin-bottom: 8px;
+        color: #ddd;
+        cursor: pointer;
+    }
+    .help-box summary {
+        color: #00ff00;
+        font-weight: bold;
+    }
+    .help-box summary:hover {
+        text-decoration: underline;
+    }
+    .help-box p {
+        margin: 5px 0 0 20px;
+        color: #aaa;
+        font-size: 0.9rem;
+    }
+</style>
+
+<h2 class="section-title"><i class="fas fa-terminal"></i> جرب كالي الان</h2>
+<p class="text-center text-light" style="font-size: 0.9rem; color: #888;">اكتب أمراً و اضغط Enter. اضغط على الأمر في الأسفل لتعرف شرحه.</p>
+
+<div class="terminal-container">
+    <div class="terminal-header">
+        ⚡ Cyber Salah Security | Interactive Lab
+    </div>
+    <div class="output-area" id="output">
+        <span class="text-warning">[!] مرحباً بك في المختبر التفاعلي.</span><br>
+        <span class="text-warning">[!] اكتب أمراً واضغط Enter لترى النتيجة.</span>
+    </div>
+    <div class="input-line">
+        <span class="prompt">root@cyber-salah:~$</span>
+        <input type="text" id="commandInput" placeholder="اكتب أمراً هنا..." autofocus>
+    </div>
+</div>
+
+<!-- صندوق الأوامر المتاحة -->
+<div class="help-box">
+    <h5>الأوامر المتاحة حالياً هي:</h5>
+    
+    <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 10px;">
+        <div style="border-bottom: 1px solid #333; padding-bottom: 5px;">
+            <span style="color: #00ff00; font-weight: bold;">ls</span>
+            <span style="color: #aaa; margin-left: 15px; font-size: 0.9rem;">يعرض قائمة الملفات والمجلدات في المجلد الحالي.</span>
+        </div>
+        <div style="border-bottom: 1px solid #333; padding-bottom: 5px;">
+            <span style="color: #00ff00; font-weight: bold;">whoami</span>
+            <span style="color: #aaa; margin-left: 15px; font-size: 0.9rem;">يظهر اسم المستخدم الحالي للنظام.</span>
+        </div>
+        <div style="border-bottom: 1px solid #333; padding-bottom: 5px;">
+            <span style="color: #00ff00; font-weight: bold;">date</span>
+            <span style="color: #aaa; margin-left: 15px; font-size: 0.9rem;">يعرض التاريخ والوقت الحاليين للنظام.</span>
+        </div>
+        <div style="border-bottom: 1px solid #333; padding-bottom: 5px;">
+            <span style="color: #00ff00; font-weight: bold;">echo</span>
+            <span style="color: #aaa; margin-left: 15px; font-size: 0.9rem;">يطبع نصوصاً أو متغيرات على الشاشة.</span>
+        </div>
+        <div style="border-bottom: 1px solid #333; padding-bottom: 5px;">
+            <span style="color: #00ff00; font-weight: bold;">clear</span>
+            <span style="color: #aaa; margin-left: 15px; font-size: 0.9rem;">يمسح شاشة الطرفية وينظفها.</span>
+        </div>
+        <div style="border-bottom: 1px solid #333; padding-bottom: 5px;">
+            <span style="color: #00ff00; font-weight: bold;">ifconfig</span>
+            <span style="color: #aaa; margin-left: 15px; font-size: 0.9rem;">يعرض معلومات واجهات الشبكة (مثل عنوان IP).</span>
+        </div>
+        <div style="border-bottom: 1px solid #333; padding-bottom: 5px;">
+            <span style="color: #00ff00; font-weight: bold;">ps</span>
+            <span style="color: #aaa; margin-left: 15px; font-size: 0.9rem;">يعرض العمليات النشطة في النظام.</span>
+        </div>
+        <div style="border-bottom: 1px solid #333; padding-bottom: 5px;">
+            <span style="color: #00ff00; font-weight: bold;">top</span>
+            <span style="color: #aaa; margin-left: 15px; font-size: 0.9rem;">يعرض عمليات النظام بشكل حيوي (استهلاك الموارد).</span>
+        </div>
+        <div style="border-bottom: 1px solid #333; padding-bottom: 5px;">
+            <span style="color: #00ff00; font-weight: bold;">pwd</span>
+            <span style="color: #aaa; margin-left: 15px; font-size: 0.9rem;">يعرض المسار الكامل للمجلد الحالي.</span>
+        </div>
+        <div style="border-bottom: 1px solid #333; padding-bottom: 5px;">
+            <span style="color: #00ff00; font-weight: bold;">mkdir</span>
+            <span style="color: #aaa; margin-left: 15px; font-size: 0.9rem;">ينشئ مجلداً جديداً.</span>
+        </div>
+        <div style="border-bottom: 1px solid #333; padding-bottom: 5px;">
+            <span style="color: #00ff00; font-weight: bold;">rm</span>
+            <span style="color: #aaa; margin-left: 15px; font-size: 0.9rem;">يحذف ملفاً أو مجلداً (احذر عند الاستخدام).</span>
+        </div>
+        <div style="border-bottom: 1px solid #333; padding-bottom: 5px;">
+            <span style="color: #00ff00; font-weight: bold;">cp</span>
+            <span style="color: #aaa; margin-left: 15px; font-size: 0.9rem;">ينسخ ملفاً أو مجلداً إلى مكان آخر.</span>
+        </div>
+        <div style="border-bottom: 1px solid #333; padding-bottom: 5px;">
+            <span style="color: #00ff00; font-weight: bold;">mv</span>
+            <span style="color: #aaa; margin-left: 15px; font-size: 0.9rem;">ينقل أو يعيد تسمية ملف أو مجلد.</span>
+        </div>
+        <div style="border-bottom: 1px solid #333; padding-bottom: 5px;">
+            <span style="color: #00ff00; font-weight: bold;">cat</span>
+            <span style="color: #aaa; margin-left: 15px; font-size: 0.9rem;">يعرض محتوى ملف نصي على الشاشة.</span>
+        </div><div style="border-bottom: 1px solid #333; padding-bottom: 5px;">
+            <span style="color: #00ff00; font-weight: bold;">nano</span>
+            <span style="color: #aaa; margin-left: 15px; font-size: 0.9rem;">يفتح محرر نصوص بسيط لكتابة وتعديل الملفات.</span>
+        </div>
+    </div>
+</div>       
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const outputBox = document.getElementById("output");
+        const inputField = document.getElementById("commandInput");
+
+        inputField.addEventListener("keydown", function(e) {
+            if (e.key === "Enter") {
+                const command = inputField.value.trim();
+                if (command.length > 0) {
+                    outputBox.innerHTML += "<br><span style='color:#00ff00;'>root@cyber-salah:~$ " + command + "</span>";
+                    
+                    let response = "";
+                    const cmd = command.toLowerCase();
+
+                    // قائمة الأوامر الواسعة
+                    if (cmd === "ls") {
+                        response = "Desktop  Downloads  Documents  Pictures  Videos  app.py";
+                    } else if (cmd === "whoami") {
+                        response = "root";
+                    } else if (cmd === "date") {
+                        response = new Date().toString();
+                    } else if (cmd === "echo") {
+                        response = "مرحبا بك في عالم الأمن السيبراني!";
+                    } else if (cmd === "clear") {
+                        outputBox.innerHTML = "<span class='text-warning'>[!] تم مسح الشاشة.</span>";
+                        return;
+                    } else if (cmd === "ifconfig") {
+                        response = "eth0: 192.168.1.100  netmask 255.255.255.0  broadcast 192.168.1.255";
+                    } else if (cmd === "ps") {
+                        response = "  PID TTY          TIME CMD\n 1234 pts/0    00:00:00 bash\n 5678 pts/0    00:00:01 python3";
+                    } else if (cmd === "top") {
+                        response = "top - 12:00:00 up 1 day,  2 users,  load average: 0.00, 0.01, 0.05\nTasks: 120 total,   1 running, 119 sleeping...";
+                    } else if (cmd === "pwd") {
+                        response = "/home/root/cyber-salah-security";} else if (cmd === "cd") {
+                        response = "cd: الدخول إلى المجلد... (محاكاة)";
+                    } else if (cmd === "mkdir") {
+                        response = "mkdir: تم إنشاء المجلد بنجاح.";
+                    } else if (cmd === "rm") {
+                        response = "rm: تم حذف الملف (محاكاة).";
+                    } else if (cmd === "cp") {
+                        response = "cp: تم نسخ الملف (محاكاة).";
+                    } else if (cmd === "mv") {
+                        response = "mv: تم نقل الملف (محاكاة).";
+                    } else if (cmd === "cat") {
+                        response = "cat: [محتوى الملف] هذا هو محتوى الملف (محاكاة).";
+                    } else if (cmd === "nano") {
+                        response = "nano: فتح محرر النصوص (محاكاة).";
+                    } else if (cmd === "exit") {
+                        response = "exit: الخروج من الطرفية (محاكاة).";
+                    } else {
+                        response = "bash: " + command + ": command not found";
+                    }
+                    
+                    outputBox.innerHTML += "<br><span style='color: #ddd;'>" + response + "</span>";
+                    inputField.value = "";
+                    outputBox.scrollTop = outputBox.scrollHeight;
+                }
+            }
+        });
+    });
+</script>
+
+<a href="/" class="btn btn-main mt-3"><i class="fas fa-home"></i> العودة للرئيسية</a>
+
+{% endblock %}

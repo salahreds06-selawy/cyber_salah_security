@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    .cmd-box { background: #0a0a0a; border-left: 5px solid #ffffff; padding: 15px; font-family: monospace; color: #00ff00; border-radius: 5px; margin: 15px 0; }
+    .info-box { background: #111; border: 1px solid #333; padding: 20px; border-radius: 5px; margin: 20px 0; }
+    .warning-box { background: #1a0a0a; border: 1px solid #ffffff; padding: 15px; border-radius: 5px; margin: 20px 0; }
+</style>
+
+<div class="card-dark p-4">
+    <h2 class="section-title"><i class="fas fa-key"></i> John the Ripper: الموسوعة الكاملة</h2>
+    
+    <div class="text-center mb-4">
+        <i class="fas fa-key fs-1 text-light"></i>
+    </div>
+
+    <h4 class="text-light">1. ما هو John the Ripper؟</h4>
+    <p><strong>John the Ripper</strong> هو أداة شهيرة لكسر كلمات المرور. تستخدم <strong>القواميس</strong> و <strong>هجمات القوة الغاشمة</strong> لاختراق كلمات المرور المشفرة.</p>
+
+    <h4 class="text-light mt-4">2. أنواع التشفير التي يدعمها</h4>
+    <ul>
+        <li>MD5, SHA1, SHA256</li>
+        <li>NTLM (خاص بويندوز)</li>
+        <li>تشفير ملفات ZIP و RAR</li>
+    </ul>
+
+    <h4 class="text-light mt-4">3. مثال عملي</h4>
+    <p>لكسر كلمة مرور مشفرة، استخدم الأمر:</p>
+    <div class="cmd-box">john --format=raw-md5 hash.txt</div>
+    <p>هذا سيقوم بفك تشفير كلمة المرور المخزنة بصيغة MD5.</p>
+
+    <div class="warning-box mt-4">
+        <h5 class="text-light"><i class="fas fa-gavel"></i> تنبيه</h5>
+        <p>استخدم John the Ripper فقط على ملفاتك الخاصة. كسر كلمات مرور الآخرين غير قانوني.</p>
+    </div>
+
+    <a href="/hacking_tools" class="btn btn-red mt-3"><i class="fas fa-arrow-left"></i> العودة لقاعة الأدوات</a>
+</div>
+{% endblock %}

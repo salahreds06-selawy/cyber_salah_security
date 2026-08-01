@@ -1,0 +1,132 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    /* تنسيق الكتاب التعليمي */
+    .book-container { max-width: 900px; margin: 0 auto; }
+    .chapter { background-color: #141414; border-radius: 12px; padding: 30px; margin-bottom: 35px; border-left: 6px solid #00ff00; }
+    .chapter-title { color: #00ff00; font-size: 1.7rem; border-bottom: 1px solid #333; padding-bottom: 10px; margin-bottom: 20px; }
+    .section-title-inner { color: #fff; font-size: 1.2rem; margin-top: 20px; }
+    .code-box { background: #000; border: 1px solid #00ff00; padding: 15px; font-family: 'Courier New', monospace; color: #00ff00; border-radius: 8px; margin: 15px 0; overflow-x: auto; }
+    .tip-box { background: #1e2a1e; border: 1px solid #00ff00; padding: 15px; border-radius: 8px; margin: 15px 0; }
+    .warning-box { background: #2a1e1e; border: 1px solid #ff4444; padding: 15px; border-radius: 8px; margin: 15px 0; }
+    .list-content { line-height: 1.8; color: #ccc; padding-left: 20px; }
+    .list-content li { margin-bottom: 8px; }
+    p { line-height: 1.8; color: #ddd; }
+</style>
+
+<div class="book-container">
+    <div class="text-center mb-5">
+        <i class="fas fa-seedling fs-1 text-success mb-3"></i>
+        <h1 class="text-success fw-bold" style="font-size: 3rem;">مسار المبتدئين</h1>
+        <p class="text-light fs-5">الكتاب الشامل لتأسيسك في عالم الأمن السيبراني</p>
+    </div>
+
+    <!-- الفصل 1 -->
+    <div class="chapter">
+        <h2 class="chapter-title">📖 الفصل الأول: ما هو الأمن السيبراني؟</h2>
+        <p>في عالمنا الرقمي، أصبحت البيانات هي الذهب الجديد. الأمن السيبراني هو علم حماية هذه البيانات والأنظمة والشبكات من الهجمات الرقمية. ليس الأمر مجرد حماية كلمة مرور، بل هو حماية البنية التحتية للدول والشركات.</p>
+        
+        <h3 class="section-title-inner">🔹 لماذا يعتبر الأمن السيبراني مهمًا؟</h3>
+        <ul class="list-content">
+            <li><strong>حماية البيانات الشخصية:</strong> لمنع سرقة الهوية والأموال.</li>
+            <li><strong>حماية الشركات:</strong> هجوم واحد قد يكلف شركة ملايين الدولارات.</li>
+            <li><strong>الأمن الوطني:</strong> الهجمات السيبرانية يمكن أن تشل شبكات الكهرباء والبنوك.</li>
+        </ul>
+        
+        <h3 class="section-title-inner">🔹 الفرق بين الهاكر الأبيض والأسود</h3>
+        <ul class="list-content">
+            <li><strong>الهاكر الأبيض (White Hat):</strong> هو خبير أمن يعمل بشكل قانوني لاختبار أنظمة الشركات وحمايتها. (هذا هو الذي ستكون أنت).</li>
+            <li><strong>الهاكر الأسود (Black Hat):</strong> هو القرصان الذي يخترق الأنظمة بشكل غير قانوني لسرقة البيانات أو المال.</li>
+        </ul>
+    </div>
+
+    <!-- الفصل 2 -->
+    <div class="chapter">
+        <h2 class="chapter-title">🔧 الفصل الثاني: أساسيات الشبكات (TCP/IP)</h2>
+        <p>قبل أن تمسك أي أداة اختراق، يجب أن تفهم كيف تتنقل البيانات في الشبكة. هذا هو أساس كل شيء.</p>
+
+        <h3 class="section-title-inner">🔹 ما هو عنوان IP؟</h3>
+        <p>IP (Internet Protocol) هو عنوان فريد يعطى لكل جهاز متصل بالإنترنت. هو بمثابة "عنوان منزلك" في العالم الرقمي. مثال: <code>192.168.1.1</code> هو عنوان شائع للراوتر المنزلي.</p>
+
+        <h3 class="section-title-inner">🔹 ما هي المنافذ (Ports)؟</h3>
+        <p>إذا كان الـ IP هو "عنوان المنزل"، فإن المنافذ هي "أبواب" هذا المنزل. كل خدمة (مثل الويب أو البريد الإلكتروني) تستخدم منفذًا محددًا.</p>
+        <div class="code-box">
+            22  -> SSH (تحكم عن بعد)<br>
+            80  -> HTTP (مواقع الويب)<br>
+            443 -> HTTPS (مواقع الويب الآمنة)<br>
+            53  -> DNS
+        </div>
+    </div>
+
+    <!-- الفصل 3 -->
+    <div class="chapter">
+        <h2 class="chapter-title">🖥️ الفصل الثالث: بناء بيئة العمل الخاصة بك (مرحلة حرجة)</h2>
+        <p>خطوتك الأولى في العالم العملي هي بناء بيئة آمنة للتدريب. سنستخدم برنامج <strong>VirtualBox</strong> لتثبيت <strong>Kali Linux</strong> بداخله.</p>
+
+        <h3 class="section-title-inner">🔹 ما هو VirtualBox؟</h3>
+        <p>VirtualBox هو برنامج مجاني من أوراكل، يسمح لك بإنشاء "جهاز افتراضي" داخل حاسوبك. هذا يعني أنه يمكنك تثبيت نظام تشغيل جديد (مثل Kali Linux) دون الحاجة لحذف ويندوز أو تدمير جهازك الحقيقي.</p><h3 class="section-title-inner">🔹 ما هو Kali Linux؟</h3>
+        <p>Kali Linux هو نظام تشغيل مفتوح المصدر مبني على دبيان، وهو المعيار الذهبي في اختبار الاختراق. يحتوي على أكثر من 600 أداة أمنية مثبتة مسبقًا.</p>
+
+        <h3 class="section-title-inner">🔹 خطوات التثبيت (باختصار)</h3>
+        <ul class="list-content">
+            <li>تحميل VirtualBox من virtualbox.org.</li>
+            <li>تحميل ملف ISO لكالي لينكس من kali.org.</li>
+            <li>إنشاء جهاز افتراضي جديد في VirtualBox واختيار ملف ISO كقرص.</li>
+            <li>اتبع تعليمات التثبيت البسيطة وابدأ رحلتك.</li>
+        </ul>
+    </div>
+
+    <!-- الفصل 4 -->
+    <div class="chapter">
+        <h2 class="chapter-title">⌨️ الفصل الرابع: أوامر Linux الأساسية</h2>
+        <p>في Kali Linux، ستتعامل مع النظام عبر الطرفية (Terminal). إليك مجموعة من الأوامر التي ستستخدمها يوميًا.</p>
+        
+        <div class="code-box">ls</div>
+        <p>يعرض جميع الملفات والمجلدات في المكان الحالي.</p>
+        
+        <div class="code-box">cd [اسم_المجلد]</div>
+        <p>ينقلك إلى مجلد آخر. مثال: <code>cd Documents</code>.</p>
+
+        <div class="code-box">pwd</div>
+        <p>يعرض المسار الكامل للمجلد الذي أنت فيه حاليًا.</p>
+
+        <div class="code-box">sudo [أمر]</div>
+        <p>ينفذ الأمر بصلاحيات المدير (مهم جدًا).</p>
+
+        <div class="code-box">nano [اسم_ملف]</div>
+        <p>يفتح محرر نصوص بسيط لكتابة وتعديل الملفات.</p>
+    </div>
+
+    <!-- الفصل 5 -->
+    <div class="chapter">
+        <h2 class="chapter-title">⚖️ الفصل الخامس: الأخلاقيات والمسؤولية</h2>
+        <div class="warning-box">
+            <h4 class="text-danger"><i class="fas fa-gavel"></i> تنبيه قانوني خطير</h4>
+            <p>كل الأدوات التي ستتعلمها تم تصميمها للدفاع ولاختبار الأنظمة المملوكة لك فقط.</p>
+            <p><strong>استخدام أي أداة على شبكة أو جهاز لا تملكه يعتبر جريمة جنائية في معظم دول العالم ويمكن أن يؤدي إلى عقوبات شديدة تصل إلى السجن.</strong></p>
+        </div>
+        <div class="tip-box">
+            <h4 class="text-success"><i class="fas fa-lightbulb"></i> نصيحة ذهبية</h4>
+            <p>تدرب فقط على منصات مخصصة للتعلم مثل <strong>TryHackMe</strong> و <strong>Hack The Box</strong>. هذه المنصات توفر بيئات قانونية وآمنة لممارسة مهاراتك.</p>
+        </div>
+    </div>
+
+    <!-- الفصل 6 -->
+    <div class="chapter">
+        <h2 class="chapter-title">🚀 الفصل السادس: خطة الطريق التالية</h2>
+        <p>لقد أكملت الأساسيات بنجاح. إليك ما يجب أن تفعله في الأيام القادمة:</p>
+        <ul class="list-content">
+            <li><strong>اليوم 1:</strong> تدرب على أوامر Linux الأساسية.</li>
+            <li><strong>اليوم 2:</strong> ابحث عن دليل Nmap للمبتدئين على يوتيوب.</li>
+            <li><strong>اليوم 3:</strong> العب على منصة TryHackMe.</li>
+            <li><strong>بعد ذلك:</strong> انتقل إلى مسار المتوسط.</li>
+        </ul>
+    </div>
+
+    <div class="text-center mt-5">
+        <a href="/roadmaps" class="btn btn-main"><i class="fas fa-arrow-left"></i> العودة لصفحة المسارات</a>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    .cmd-box { background: #0a0a0a; border-left: 5px solid #17a2b8; padding: 15px; font-family: monospace; color: #00ff00; border-radius: 5px; margin: 15px 0; }
+    .info-box { background: #111; border: 1px solid #333; padding: 20px; border-radius: 5px; margin: 20px 0; }
+    .warning-box { background: #1a0a0a; border: 1px solid #17a2b8; padding: 15px; border-radius: 5px; margin: 20px 0; }
+</style>
+
+<div class="card-dark p-4">
+    <h2 class="section-title"><i class="fas fa-chart-line"></i> Wireshark: الموسوعة الكاملة</h2>
+    
+    <div class="text-center mb-4">
+        <i class="fas fa-chart-line fs-1 text-info"></i>
+    </div>
+
+    <h4 class="text-info">1. ما هو Wireshark؟</h4>
+    <p>
+        <strong>Wireshark</strong> هو أداة مفتوحة المصدر لتحليل حزم الشبكة (Packet Analyzer). 
+        يسمح لك بمشاهدة حركة البيانات داخل الشبكة بشكل حي، مما يجعله الأداة المثالية لفهم بروتوكولات الشبكة واكتشاف الهجمات.
+    </p>
+
+    <h4 class="text-info mt-4">2. لماذا نستخدم Wireshark؟</h4>
+    <div class="info-box">
+        <ul class="text-light">
+            <li><strong>تحليل حركة الشبكة:</strong> رؤية كل حزمة بيانات تدخل وتخرج من جهازك.</li>
+            <li><strong>اكتشاف الهجمات:</strong> التعرف على الأنماط الخبيثة في حركة البيانات.</li>
+            <li><strong>تعلم البروتوكولات:</strong> فهم كيف تعمل TCP/IP و HTTP وغيرها.</li>
+            <li><strong>حل مشاكل الشبكة:</strong> العثور على أسباب البطء أو انقطاع الاتصال.</li>
+        </ul>
+    </div>
+  <h4 class="text-info mt-4">3. كيف تبدأ مع Wireshark؟</h4>
+    <p>
+        بمجرد فتح التطبيق، اختر بطاقة الشبكة الخاصة بك (Wi-Fi أو Ethernet)، واضغط على زر <strong>Start Capture</strong>.
+        ستظهر لك آلاف الحزم. ابحث عن حزم <strong>HTTP</strong> أو <strong>TCP</strong> لترى كيف تتصفح الإنترنت.
+    </p>
+
+    <h4 class="text-info mt-4">4. نصائح ذهبية</h4>
+    <ul>
+        <li>استخدم <strong>فلاتر (Filters)</strong> لفرز الحزم، مثلاً: <code>http</code> أو <code>tcp.port == 80</code>.</li>
+        <li>افحص حزم <strong>ARP</strong> لاكتشاف هجمات التسمم (ARP Poisoning).</li>
+        <li>استخدم Wireshark في بيئة معملية لتعلم أساسيات الشبكة.</li>
+    </ul>
+
+    <div class="warning-box mt-4">
+        <h5 class="text-info"><i class="fas fa-gavel"></i> تنبيه أخلاقي</h5>
+        <p>
+            Wireshark أداة مراقبة قوية. استخدامه لمراقبة شبكات لا تملكها <strong>جريمة</strong>. التزم دائماً بالشبكات التي تملكها أو المصرح بها.
+        </p>
+    </div>
+
+    <a href="/hacking_tools" class="btn btn-red mt-3"><i class="fas fa-arrow-left"></i> العودة لقاعة الأدوات</a>
+</div>
+{% endblock %}

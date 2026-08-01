@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2 class="section-title"><i class="fas fa-toolbox"></i> قاعة أدوات الاختراق</h2>
+<p class="text-center text-light mb-5">اختر الأداة التي تريد تعلمها. اضغط على "شرح" لفتح موسوعة كاملة.</p>
+
+<div class="row g-3">
+
+    <!-- Kali Linux -->
+    <div class="col-md-6">
+        <div class="bg-black p-3 rounded border border-secondary d-flex justify-content-between align-items-center">
+            <div><i class="fab fa-linux text-danger me-2"></i> <span class="text-white">Kali Linux</span></div>
+            <div>
+                <a href="https://www.kali.org/get-kali/" target="_blank" class="btn btn-red btn-sm me-2">تحميل</a>
+                <a href="/kali_guide" class="btn btn-outline-light btn-sm">شرح</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- VirtualBox -->
+    <div class="col-md-6">
+        <div class="bg-black p-3 rounded border border-secondary d-flex justify-content-between align-items-center">
+            <div><i class="fas fa-box text-danger me-2"></i> <span class="text-white">VirtualBox</span></div>
+            <div>
+                <a href="https://www.virtualbox.org/wiki/Downloads" target="_blank" class="btn btn-red btn-sm me-2">تحميل</a>
+                <a href="/vbox_guide" class="btn btn-outline-light btn-sm">شرح</a>
+            </div>
+        </div>
+    </div>
+     
+     <!-- Nmap -->
+    <div class="col-md-6">
+        <div class="bg-black p-3 rounded border border-secondary d-flex justify-content-between align-items-center">
+            <div><i class="fas fa-network-wired text-info me-2"></i> <span class="text-white">Nmap</span></div>
+            <div>
+                <a href="https://nmap.org/download.html" target="_blank" class="btn btn-info btn-sm me-2" style="background:#17a2b8;color:white;">تحميل</a>
+                <a href="/nmap_guide" class="btn btn-outline-light btn-sm">شرح</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Wireshark -->
+    <div class="col-md-6">
+        <div class="bg-black p-3 rounded border border-secondary d-flex justify-content-between align-items-center">
+            <div><i class="fas fa-chart-line text-info me-2"></i> <span class="text-white">Wireshark</span></div>
+            <div>
+                <a href="https://www.wireshark.org/download.html" target="_blank" class="btn btn-info btn-sm me-2" style="background:#17a2b8;color:white;">تحميل</a>
+                <a href="/wireshark_guide" class="btn btn-outline-light btn-sm">شرح</a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Metasploit -->
+    <div class="col-md-6">
+        <div class="bg-black p-3 rounded border border-secondary d-flex justify-content-between align-items-center">
+            <div><i class="fas fa-skull text-warning me-2"></i> <span class="text-white">Metasploit</span></div>
+            <div>
+                <a href="https://www.metasploit.com/" target="_blank" class="btn btn-warning btn-sm me-2" style="color:black;">تحميل</a>
+                <a href="/metasploit_guide" class="btn btn-outline-light btn-sm">شرح</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Burp Suite -->
+    <div class="col-md-6">
+        <div class="bg-black p-3 rounded border border-secondary d-flex justify-content-between align-items-center">
+            <div><i class="fas fa-user-secret text-warning me-2"></i> <span class="text-white">Burp Suite</span></div>
+            <div>
+                <a href="https://portswigger.net/burp/communitydownload" target="_blank" class="btn btn-warning btn-sm me-2" style="color:black;">تحميل</a>
+                <a href="/burp_guide" class="btn btn-outline-light btn-sm">شرح</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- John the Ripper -->
+    <div class="col-md-6">
+        <div class="bg-black p-3 rounded border border-secondary d-flex justify-content-between align-items-center">
+            <div><i class="fas fa-key text-light me-2"></i> <span class="text-white">John the Ripper</span></div>
+            <div>
+                <a href="https://www.openwall.com/john/" target="_blank" class="btn btn-light btn-sm me-2" style="color:black;">تحميل</a>
+                <a href="/john_guide" class="btn btn-outline-light btn-sm">شرح</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hydra -->
+    <div class="col-md-6">
+        <div class="bg-black p-3 rounded border border-secondary d-flex justify-content-between align-items-center">
+            <div><i class="fas fa-skull text-light me-2"></i> <span class="text-white">Hydra</span></div>
+            <div>
+                <a href="https://github.com/vanhauser-thc/thc-hydra" target="_blank" class="btn btn-light btn-sm me-2" style="color:black;">تحميل</a>
+                <a href="/hydra_guide" class="btn btn-outline-light btn-sm">شرح</a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="text-center mt-5">
+    <a href="/" class="btn btn-red"><i class="fas fa-home"></i> العودة للرئيسية</a>
+</div>
+
+{% endblock %}

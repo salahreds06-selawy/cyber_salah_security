@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    .cmd-box { background: #0a0a0a; border-left: 5px solid #d32f2f; padding: 15px; font-family: monospace; color: #00ff00; border-radius: 5px; margin: 15px 0; }
+    .info-box { background: #111; border: 1px solid #333; padding: 20px; border-radius: 5px; margin: 20px 0; }
+    .warning-box { background: #1a0a0a; border: 1px solid #d32f2f; padding: 15px; border-radius: 5px; margin: 20px 0; }
+</style>
+
+<div class="card-dark p-4">
+    <h2 class="section-title"><i class="fab fa-linux"></i> Kali Linux: الموسوعة الكاملة</h2>
+    
+    <div class="text-center mb-4">
+        <i class="fab fa-linux fs-1 text-danger"></i>
+    </div>
+
+    <h4 class="text-danger">1. ما هو Kali Linux؟</h4>
+    <p>
+        Kali Linux هو نظام تشغيل مفتوح المصدر، مبني على توزيعة <strong>Debian</strong>. 
+        تم تطويره خصيصاً لمتخصصي الأمن السيبراني، ويعتبر <strong>"سكين الجيش السويسري"</strong> لمختبرات الاختراق الأخلاقي.
+    </p>
+    <p>
+        تم إطلاقه في عام 2013 كخليفة لنظام <strong>BackTrack</strong>، ومنذ ذلك الحين أصبح المعيار الذهبي لاختبار الاختراق.
+    </p>
+
+    <h4 class="text-danger mt-4">2. لماذا يستخدم Kali Linux؟</h4>
+    <div class="info-box">
+        <ul class="text-light">
+            <li><strong>الأدوات المثبتة مسبقاً:</strong> يحتوي على أكثر من <strong>600 أداة</strong> أمنية جاهزة للاستخدام الفوري.</li>
+            <li><strong>التحديث المستمر:</strong> يتم تحديثه باستمرار بأحدث الثغرات والأدوات.</li>
+            <li><strong>الدعم المجتمعي:</strong> أكبر مجتمع للمطورين ومختبرين الأمن في العالم.</li>
+            <li><strong>التوافق:</strong> يعمل على جميع أنواع الأجهزة (حاسوب، فلاشة USB، أجهزة افتراضية).</li>
+        </ul>
+    </div>
+
+    <h4 class="text-danger mt-4">3. الأدوات الأساسية المضمنة</h4>
+    <p>قائمة بأهم الأدوات التي تأتي مع كالي:</p>
+    <div class="row g-3">
+        <div class="col-md-4">
+            <div class="bg-black p-3 rounded border border-secondary text-center">
+                <i class="fas fa-network-wired text-info"></i>
+                <h6>Nmap</h6>
+                <p class="small text-secondary">مسح الشبكات</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="bg-black p-3 rounded border border-secondary text-center">
+                <i class="fas fa-skull text-warning"></i>
+                <h6>Metasploit</h6>
+                <p class="small text-secondary">إطار الاختراق</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="bg-black p-3 rounded border border-secondary text-center">
+                <i class="fas fa-key text-light"></i>
+                <h6>John the Ripper</h6>
+                <p class="small text-secondary">كسر كلمات المرور</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="bg-black p-3 rounded border border-secondary text-center">
+                <i class="fas fa-user-secret text-warning"></i>
+                <h6>Burp Suite</h6>
+                <p class="small text-secondary">اختبار الويب</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="bg-black p-3 rounded border border-secondary text-center">
+                <i class="fas fa-chart-line text-info"></i>
+                <h6>Wireshark</h6>
+                <p class="small text-secondary">تحليل الشبكة</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="bg-black p-3 rounded border border-secondary text-center">
+                <i class="fas fa-skull text-light"></i>
+                <h6>Hydra</h6>
+                <p class="small text-secondary">هجوم القوة الغاشمة</p>
+            </div>
+        </div>
+    </div>
+
+    <h4 class="text-danger mt-4">4. كيف تثبت Kali Linux؟</h4>
+    <p>هناك ثلاث طرق رئيسية:</p>
+    <ul>
+        <li><strong>التثبيت الدائم (Hard Drive):</strong> تثبيت مباشر على القرص الصلب.</li>
+        <li><strong>الجهاز الافتراضي (VM):</strong> استخدام VirtualBox لتثبيته داخل ويندوز (الطريقة الأكثر أماناً).</li>
+        <li><strong>USB Live:</strong> تثبيته على فلاشة USB وتشغيله على أي جهاز.</li>
+    </ul>
+
+    <div class="warning-box mt-4">
+        <h5 class="text-danger"><i class="fas fa-gavel"></i> تنبيه أخلاقي</h5>
+        <p>
+            Kali Linux هو نظام للدفاع والتدريب. استخدامه لاختراق شبكات أو أجهزة لا تملكها <strong>يعتبر جريمة</strong> في جميع دول العالم. 
+            تدرب دائماً على شبكتك الخاصة أو على منصات مثل TryHackMe و Hack The Box.
+        </p>
+    </div>
+
+    <a href="/hacking_tools" class="btn btn-red mt-3"><i class="fas fa-arrow-left"></i> العودة لقاعة الأدوات</a>
+</div>
+{% endblock %}
